@@ -32,15 +32,21 @@ updateLeader()
 
 function updateLeader(){
 
-let max=Math.max(scores.orange,scores.yellow,scores.blue)
+const max = Math.max(scores.orange, scores.yellow, scores.blue)
 
-let leader="Uafgjort"
+const leaders = []
 
-if(scores.orange==max)leader="Orange"
-if(scores.yellow==max)leader="Gul"
-if(scores.blue==max)leader="Blå"
+if(scores.orange === max) leaders.push("Orange")
+if(scores.yellow === max) leaders.push("Gul")
+if(scores.blue === max) leaders.push("Blå")
 
-document.getElementById("leader").textContent=leader
+let leaderText = "Ingen"
+
+if(max > 0){
+leaderText = leaders.length === 1 ? leaders[0] : "Uafgjort"
+}
+
+document.getElementById("leader").textContent = leaderText
 
 }
 
