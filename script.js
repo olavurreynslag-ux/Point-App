@@ -15,8 +15,8 @@ let scores = {
   blue: 0
 };
 
-function addPoint(color, val) {
-  scores[color] += val;
+function addPoint(color, value) {
+  scores[color] += value;
 
   document.getElementById("orangeScore").textContent = scores.orange;
   document.getElementById("yellowScore").textContent = scores.yellow;
@@ -49,18 +49,18 @@ let times = {
   blue: 0
 };
 
-let active = null;
+let activeColor = null;
 let paused = false;
 
 function activateColor(color) {
-  active = color;
+  activeColor = color;
   paused = false;
   document.getElementById("pauseBtn").textContent = "Pause";
 }
 
 setInterval(() => {
-  if (active && !paused) {
-    times[active]++;
+  if (activeColor && !paused) {
+    times[activeColor]++;
 
     document.getElementById("orangeTime").textContent = times.orange;
     document.getElementById("yellowTime").textContent = times.yellow;
@@ -69,7 +69,7 @@ setInterval(() => {
 }, 1000);
 
 function pauseResume() {
-  if (!active) return;
+  if (!activeColor) return;
 
   paused = !paused;
   document.getElementById("pauseBtn").textContent = paused ? "Genoptag" : "Pause";
@@ -101,15 +101,17 @@ let tScores = {
   blue: 0
 };
 
-let last = [];
+let lastClicks = [];
 
 function trekantClick(color) {
-  last.push(color);
-  if (last.length > 3) last.shift();
+  lastClicks.push(color);
+  if (lastClicks.length > 3) {
+    lastClicks.shift();
+  }
 
   tScores[color] += 1;
 
-  if (last.length === 3 && last.every(v => v === color)) {
+  if (lastClicks.length === 3 && lastClicks.every(c => c === color)) {
     tScores[color] += 2;
   }
 
@@ -145,28 +147,30 @@ function formatTime(totalSeconds) {
 }
 
 function startStafet() {
-  if (stafetRunning) return;
-
+  clearInterval(stafetTimer);
+  stafetSeconds = 0;
   stafetRunning = true;
+
+  document.getElementById("yellowStafet").textContent = "00:00";
+  document.getElementById("greenStafet").textContent = "00:00";
 
   stafetTimer = setInterval(() => {
     stafetSeconds++;
+    const formatted = formatTime(stafetSeconds);
 
-    document.getElementById("yellowStafet").textContent = formatTime(stafetSeconds);
-    document.getElementById("greenStafet").textContent = formatTime(stafetSeconds);
+    document.getElementById("yellowStafet").textContent = formatted;
+    document.getElementById("greenStafet").textContent = formatted;
   }, 1000);
 }
 
 function stopYellow() {
   if (!stafetRunning) return;
-
   clearInterval(stafetTimer);
   stafetRunning = false;
 }
 
 function stopGreen() {
   if (!stafetRunning) return;
-
   clearInterval(stafetTimer);
   stafetRunning = false;
 }
