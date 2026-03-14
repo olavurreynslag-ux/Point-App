@@ -190,20 +190,14 @@ function startStafet() {
 }
 
 function stopYellow() {
-
   yellowRunning = false;
-
-  const btn = document.getElementById("yellowBtn");
-
-  btn.style.background = "gray";
-  btn.style.color = "white";
-
+  document.getElementById("yellowBtn").classList.add("stopped");
 }
 
 function stopGreen() {
   greenRunning = false;
+  document.getElementById("greenBtn").classList.add("stopped");
 }
-
 function resetStafet() {
 
   clearInterval(stafetTimer);
