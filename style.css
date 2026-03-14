@@ -24,7 +24,7 @@ button {
   border-radius: 12px;
   color: white;
   cursor: pointer;
-  background: #663336;
+  
 }
 
 button:active {
@@ -50,7 +50,7 @@ button:active {
 }
 
 .menuButton {
-  background: #6ec6ff;
+  background: #8ed0ff;
   color: black;
 }
 
