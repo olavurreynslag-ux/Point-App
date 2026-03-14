@@ -205,15 +205,22 @@ function stopGreen() {
 }
 
 function resetStafet() {
-  clearInterval(stafetTimer);
 
-  stafetSeconds = 0;
-  yellowTime = 0;
-  greenTime = 0;
+  clearInterval(stafetTimer);
 
   yellowRunning = false;
   greenRunning = false;
 
+  yellowTime = 0;
+  greenTime = 0;
+
   document.getElementById("yellowStafet").textContent = "00:00";
   document.getElementById("greenStafet").textContent = "00:00";
+
+  const yellowBtn = document.getElementById("yellowBtn");
+  const greenBtn = document.getElementById("greenBtn");
+
+  yellowBtn.classList.remove("stopped");
+  greenBtn.classList.remove("stopped");
+
 }
