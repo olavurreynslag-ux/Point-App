@@ -191,10 +191,18 @@ function startStafet() {
 
 function stopYellow() {
   yellowRunning = false;
+
+  const btn = document.querySelector(".yellow");
+  btn.style.background = "gray";
+  btn.textContent = "Gul stoppet";
 }
 
 function stopGreen() {
   greenRunning = false;
+
+  const btn = document.querySelector(".green");
+  btn.style.background = "gray";
+  btn.textContent = "Grøn stoppet";
 }
 
 function resetStafet() {
@@ -209,4 +217,10 @@ function resetStafet() {
 
   document.getElementById("yellowStafet").textContent = "00:00";
   document.getElementById("greenStafet").textContent = "00:00";
+
+  document.querySelector(".yellow").style.background = "gold";
+document.querySelector(".yellow").innerHTML = 'Gul: <span id="yellowStafet">00:00</span>';
+
+document.querySelector(".green").style.background = "green";
+document.querySelector(".green").innerHTML = 'Grøn: <span id="greenStafet">00:00</span>';
 }
