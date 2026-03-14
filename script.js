@@ -191,7 +191,7 @@ function startStafet() {
 
 function stopYellow() {
   yellowRunning = false;
-  document.getElementById("yellowBtn").style.color = 'gray';
+  document.getElementById("yellowBtn").style.background = 'gray';
 }
 
 function stopGreen() {
