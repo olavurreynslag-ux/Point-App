@@ -53,7 +53,12 @@ button:active {
   color: black;
 }
 
-.stopped {
-  background: gray !important;
-  color: white !important;
+#yellowBtn.stopped {
+  background: gray;
+  color: white;
 }
+#greenBtn.stopped {
+  background: gray;
+  color: white;
+}
+
