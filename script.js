@@ -142,85 +142,89 @@ document.getElementById("tLeader").textContent=leader
 
 // STAFET
 
-let stafetTimer = null;
-let stafetSeconds = 0;
+let timer = null
+let seconds = 0
 
-let yellowRunning = false;
-let greenRunning = false;
+let yellowRunning = false
+let greenRunning = false
 
-let yellowTime = 0;
-let greenTime = 0;
+let yellowTime = 0
+let greenTime = 0
 
-function formatTime(totalSeconds) {
-  const min = Math.floor(totalSeconds / 60);
-  const sec = totalSeconds % 60;
-  return String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+
+function startStafet(){
+
+clearInterval(timer)
+
+seconds = 0
+yellowTime = 0
+greenTime = 0
+
+yellowRunning = true
+greenRunning = true
+
+timer = setInterval(()=>{
+
+seconds++
+
+if(yellowRunning){
+yellowTime++
+document.getElementById("yellowTime").textContent = yellowTime
 }
 
-function startStafet() {
-  clearInterval(stafetTimer);
-
-  stafetSeconds = 0;
-  yellowTime = 0;
-  greenTime = 0;
-
-  yellowRunning = true;
-  greenRunning = true;
-
-  document.getElementById("yellowStafet").textContent = "00:00";
-  document.getElementById("greenStafet").textContent = "00:00";
-
-  stafetTimer = setInterval(() => {
-    stafetSeconds++;
-
-    if (yellowRunning) {
-      yellowTime++;
-      document.getElementById("yellowStafet").textContent = formatTime(yellowTime);
-    }
-
-    if (greenRunning) {
-      greenTime++;
-      document.getElementById("greenStafet").textContent = formatTime(greenTime);
-    }
-
-    if (!yellowRunning && !greenRunning) {
-      clearInterval(stafetTimer);
-    }
-  }, 1000);
+if(greenRunning){
+greenTime++
+document.getElementById("greenTime").textContent = greenTime
 }
 
-function stopYellow() {
-  yellowRunning = false;
-
-  const btn = document.querySelector(".yellow");
-  btn.style.background = "gray";
-  btn.textContent = "Gul stoppet";
+if(!yellowRunning && !greenRunning){
+clearInterval(timer)
 }
 
-function stopGreen() {
-  greenRunning = false;
+},1000)
 
-  const btn = document.querySelector(".green");
-  btn.style.background = "gray";
-  btn.textContent = "Grøn stoppet";
 }
 
-function resetStafet() {
-  clearInterval(stafetTimer);
 
-  stafetSeconds = 0;
-  yellowTime = 0;
-  greenTime = 0;
+function stopYellow(){
 
-  yellowRunning = false;
-  greenRunning = false;
+yellowRunning = false
 
-  document.getElementById("yellowStafet").textContent = "00:00";
-  document.getElementById("greenStafet").textContent = "00:00";
+const btn = document.getElementById("yellowBtn")
+btn.style.background = "gray"
+btn.textContent = "Gul stoppet"
 
-  document.querySelector(".yellow").style.background = "gold";
-document.querySelector(".yellow").innerHTML = 'Gul: <span id="yellowStafet">00:00</span>';
+}
 
-document.querySelector(".green").style.background = "green";
-document.querySelector(".green").innerHTML = 'Grøn: <span id="greenStafet">00:00</span>';
+
+function stopGreen(){
+
+greenRunning = false
+
+const btn = document.getElementById("greenBtn")
+btn.style.background = "gray"
+btn.textContent = "Grøn stoppet"
+
+}
+
+
+function resetStafet(){
+
+clearInterval(timer)
+
+yellowRunning = false
+greenRunning = false
+
+yellowTime = 0
+greenTime = 0
+
+document.getElementById("yellowTime").textContent = "00"
+document.getElementById("greenTime").textContent = "00"
+
+document.getElementById("yellowBtn").style.background = "gold"
+document.getElementById("yellowBtn").innerHTML = 'Gul: <span id="yellowTime">00</span>'
+
+document.getElementById("greenBtn").style.background = "green"
+document.getElementById("greenBtn").innerHTML = 'Grøn: <span id="greenTime">00</span>'
+
 }
