@@ -1,16 +1,44 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+body{
+font-family:Arial;
+text-align:center;
+background:#f4f4f4;
 }
 
-button {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 20px;
-  font-size: 20px;
+.screen{
+padding:20px;
 }
 
-#orangeBtn { background: orange; }
-#yellowBtn { background: gold; }
-#blueBtn { background: dodgerblue; color: white; }
+.hidden{
+display:none;
+}
+
+button{
+width:80%;
+padding:20px;
+font-size:20px;
+margin:10px;
+border:none;
+border-radius:12px;
+}
+
+.menuBtn{
+background:#8ed0ff;
+}
+
+.orange{
+background:orange;
+}
+
+.yellow{
+background:gold;
+}
+
+.blue{
+background:dodgerblue;
+color:white;
+}
+
+.green{
+background:green;
+color:white;
+}
