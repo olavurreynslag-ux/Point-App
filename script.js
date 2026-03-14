@@ -142,36 +142,71 @@ document.getElementById("tLeader").textContent=leader
 
 // STAFET
 
-let stafetTimer=null
-let stafetTime=0
+let stafetTimer = null;
+let stafetSeconds = 0;
 
-function startStafet(){
+let yellowRunning = false;
+let greenRunning = false;
 
-stafetTimer=setInterval(()=>{
+let yellowTime = 0;
+let greenTime = 0;
 
-stafetTime++
-
-},100)
-
+function formatTime(totalSeconds) {
+  const min = Math.floor(totalSeconds / 60);
+  const sec = totalSeconds % 60;
+  return String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
 }
 
-function stopYellow(){
+function startStafet() {
+  clearInterval(stafetTimer);
 
-document.getElementById("yellowStafet").textContent=stafetTime
+  stafetSeconds = 0;
+  yellowTime = 0;
+  greenTime = 0;
 
+  yellowRunning = true;
+  greenRunning = true;
+
+  document.getElementById("yellowStafet").textContent = "00:00";
+  document.getElementById("greenStafet").textContent = "00:00";
+
+  stafetTimer = setInterval(() => {
+    stafetSeconds++;
+
+    if (yellowRunning) {
+      yellowTime++;
+      document.getElementById("yellowStafet").textContent = formatTime(yellowTime);
+    }
+
+    if (greenRunning) {
+      greenTime++;
+      document.getElementById("greenStafet").textContent = formatTime(greenTime);
+    }
+
+    if (!yellowRunning && !greenRunning) {
+      clearInterval(stafetTimer);
+    }
+  }, 1000);
 }
 
-function stopGreen(){
-
-document.getElementById("greenStafet").textContent=stafetTime
-
+function stopYellow() {
+  yellowRunning = false;
 }
 
-function resetStafet(){
+function stopGreen() {
+  greenRunning = false;
+}
 
-stafetTime=0
+function resetStafet() {
+  clearInterval(stafetTimer);
 
-document.getElementById("yellowStafet").textContent=0
-document.getElementById("greenStafet").textContent=0
+  stafetSeconds = 0;
+  yellowTime = 0;
+  greenTime = 0;
 
+  yellowRunning = false;
+  greenRunning = false;
+
+  document.getElementById("yellowStafet").textContent = "00:00";
+  document.getElementById("greenStafet").textContent = "00:00";
 }
