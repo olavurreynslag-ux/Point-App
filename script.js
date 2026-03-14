@@ -1,185 +1,177 @@
 // SKÆRME
-function showScreen(id) {
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.add("hidden");
-  });
-  document.getElementById(id).classList.remove("hidden");
+
+function showScreen(id){
+
+document.querySelectorAll(".screen").forEach(s=>{
+s.classList.add("hidden")
+})
+
+document.getElementById(id).classList.remove("hidden")
+
 }
 
-// --------------------
 // AFLEVERINGER
-// --------------------
-let scores = {
-  orange: 0,
-  yellow: 0,
-  blue: 0
-};
 
-function addPoint(color, value) {
-  scores[color] += value;
-
-  document.getElementById("orangeScore").textContent = scores.orange;
-  document.getElementById("yellowScore").textContent = scores.yellow;
-  document.getElementById("blueScore").textContent = scores.blue;
-
-  updateLeader();
+let scores={
+orange:0,
+yellow:0,
+blue:0
 }
 
-function updateLeader() {
-  const max = Math.max(scores.orange, scores.yellow, scores.blue);
-  const leaders = [];
+function addPoint(color,val){
 
-  if (scores.orange === max && max > 0) leaders.push("Orange");
-  if (scores.yellow === max && max > 0) leaders.push("Gul");
-  if (scores.blue === max && max > 0) leaders.push("Blå");
+scores[color]+=val
 
-  let leaderText = "Ingen";
-  if (leaders.length === 1) leaderText = leaders[0];
-  if (leaders.length > 1) leaderText = "Uafgjort";
+document.getElementById("orangeScore").textContent=scores.orange
+document.getElementById("yellowScore").textContent=scores.yellow
+document.getElementById("blueScore").textContent=scores.blue
 
-  document.getElementById("leader").textContent = leaderText;
+updateLeader()
+
 }
 
-// --------------------
+function updateLeader(){
+
+let max=Math.max(scores.orange,scores.yellow,scores.blue)
+
+let leader="Uafgjort"
+
+if(scores.orange==max)leader="Orange"
+if(scores.yellow==max)leader="Gul"
+if(scores.blue==max)leader="Blå"
+
+document.getElementById("leader").textContent=leader
+
+}
+
+
 // PÅ TID
-// --------------------
-let times = {
-  orange: 0,
-  yellow: 0,
-  blue: 0
-};
 
-let activeColor = null;
-let paused = false;
-
-function activateColor(color) {
-  activeColor = color;
-  paused = false;
-  document.getElementById("pauseBtn").textContent = "Pause";
+let times={
+orange:0,
+yellow:0,
+blue:0
 }
 
-setInterval(() => {
-  if (activeColor && !paused) {
-    times[activeColor]++;
+let active=null
+let timer=null
+let paused=false
 
-    document.getElementById("orangeTime").textContent = times.orange;
-    document.getElementById("yellowTime").textContent = times.yellow;
-    document.getElementById("blueTime").textContent = times.blue;
-  }
-}, 1000);
+function activateColor(color){
 
-function pauseResume() {
-  if (!activeColor) return;
+active=color
 
-  paused = !paused;
-  document.getElementById("pauseBtn").textContent = paused ? "Genoptag" : "Pause";
 }
 
-function stopGame() {
-  paused = true;
+timer=setInterval(()=>{
 
-  const max = Math.max(times.orange, times.yellow, times.blue);
-  const leaders = [];
+if(active && !paused){
 
-  if (times.orange === max && max > 0) leaders.push("Orange");
-  if (times.yellow === max && max > 0) leaders.push("Gul");
-  if (times.blue === max && max > 0) leaders.push("Blå");
+times[active]++
 
-  let winnerText = "Ingen";
-  if (leaders.length === 1) winnerText = leaders[0];
-  if (leaders.length > 1) winnerText = "Uafgjort";
+document.getElementById(active+"Time").textContent=times[active]
 
-  document.getElementById("winner").textContent = "Førende hold: " + winnerText;
 }
 
-// --------------------
+},1000)
+
+
+function pauseResume(){
+
+paused=!paused
+
+document.getElementById("pauseBtn").textContent=paused?"Genoptag":"Pause"
+
+}
+
+function stopGame(){
+
+let max=Math.max(times.orange,times.yellow,times.blue)
+
+let winner=""
+
+if(times.orange==max)winner="Orange"
+if(times.yellow==max)winner="Gul"
+if(times.blue==max)winner="Blå"
+
+document.getElementById("winner").textContent="Vinder: "+winner
+
+}
+
+
+
 // TREKANT
-// --------------------
-let tScores = {
-  orange: 0,
-  yellow: 0,
-  blue: 0
-};
 
-let lastClicks = [];
-
-function trekantClick(color) {
-  lastClicks.push(color);
-  if (lastClicks.length > 3) {
-    lastClicks.shift();
-  }
-
-  tScores[color] += 1;
-
-  if (lastClicks.length === 3 && lastClicks.every(c => c === color)) {
-    tScores[color] += 2;
-  }
-
-  document.getElementById("tOrange").textContent = tScores.orange;
-  document.getElementById("tYellow").textContent = tScores.yellow;
-  document.getElementById("tBlue").textContent = tScores.blue;
-
-  const max = Math.max(tScores.orange, tScores.yellow, tScores.blue);
-  const leaders = [];
-
-  if (tScores.orange === max && max > 0) leaders.push("Orange");
-  if (tScores.yellow === max && max > 0) leaders.push("Gul");
-  if (tScores.blue === max && max > 0) leaders.push("Blå");
-
-  let leaderText = "Ingen";
-  if (leaders.length === 1) leaderText = leaders[0];
-  if (leaders.length > 1) leaderText = "Uafgjort";
-
-  document.getElementById("tLeader").textContent = leaderText;
+let tScores={
+orange:0,
+yellow:0,
+blue:0
 }
 
-// --------------------
+let last=[]
+function trekantClick(color){
+
+last.push(color)
+
+if(last.length>3)last.shift()
+
+tScores[color]++
+
+if(last.length==3 && last.every(v=>v===color)){
+
+tScores[color]+=2
+
+}
+
+document.getElementById("tOrange").textContent=tScores.orange
+document.getElementById("tYellow").textContent=tScores.yellow
+document.getElementById("tBlue").textContent=tScores.blue
+
+let max=Math.max(tScores.orange,tScores.yellow,tScores.blue)
+
+let leader="Uafgjort"
+
+if(tScores.orange==max)leader="Orange"
+if(tScores.yellow==max)leader="Gul"
+if(tScores.blue==max)leader="Blå"
+
+document.getElementById("tLeader").textContent=leader
+
+}
+
+
 // STAFET
-// --------------------
-let stafetTimer = null;
-let stafetSeconds = 0;
-let stafetRunning = false;
 
-function formatTime(totalSeconds) {
-  const min = Math.floor(totalSeconds / 60);
-  const sec = totalSeconds % 60;
-  return String(min).padStart(2, "0") + ":" + String(sec).padStart(2, "0");
+let stafetTimer=null
+let stafetTime=0
+
+function startStafet(){
+
+stafetTimer=setInterval(()=>{
+
+stafetTime++
+
+},100)
+
 }
 
-function startStafet() {
-  clearInterval(stafetTimer);
-  stafetSeconds = 0;
-  stafetRunning = true;
+function stopYellow(){
 
-  document.getElementById("yellowStafet").textContent = "00:00";
-  document.getElementById("greenStafet").textContent = "00:00";
+document.getElementById("yellowStafet").textContent=stafetTime
 
-  stafetTimer = setInterval(() => {
-    stafetSeconds++;
-    const formatted = formatTime(stafetSeconds);
-
-    document.getElementById("yellowStafet").textContent = formatted;
-    document.getElementById("greenStafet").textContent = formatted;
-  }, 1000);
 }
 
-function stopYellow() {
-  if (!stafetRunning) return;
-  clearInterval(stafetTimer);
-  stafetRunning = false;
+function stopGreen(){
+
+document.getElementById("greenStafet").textContent=stafetTime
+
 }
 
-function stopGreen() {
-  if (!stafetRunning) return;
-  clearInterval(stafetTimer);
-  stafetRunning = false;
-}
+function resetStafet(){
 
-function resetStafet() {
-  clearInterval(stafetTimer);
-  stafetRunning = false;
-  stafetSeconds = 0;
+stafetTime=0
 
-  document.getElementById("yellowStafet").textContent = "00:00";
-  document.getElementById("greenStafet").textContent = "00:00";
+document.getElementById("yellowStafet").textContent=0
+document.getElementById("greenStafet").textContent=0
+
 }
