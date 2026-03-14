@@ -193,7 +193,7 @@ h1 {
 .iconImage {
   display: block;
   width: 100%;
-  max-width: 165px;
+  max-width: 200x;
   height: auto;
 }
 @media (max-width: 480px) {
