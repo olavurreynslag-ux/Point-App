@@ -12,12 +12,38 @@
 <!-- FORSIDE -->
 <div id="menu" class="screen">
 
-<h1>Vælg aktivitet</h1>
+  <div class="menuHeader">
+    <h1>Idræts App</h1>
+    <p>Vælg aktivitet</p>
+  </div>
 
-<button class="menuButton" onclick="showScreen('afleveringer')">Afleveringer</button>
-<button class="menuButton" onclick="showScreen('tid')">På tid</button>
-<button class="menuButton" onclick="showScreen('trekant')">Trekant</button>
-<button class="menuButton" onclick="showScreen('stafet')">Stafet</button>
+  <div class="menuGrid">
+
+    <button class="menuButton" onclick="showScreen('afleveringer')">
+      <div class="menuButtonIcon">🏐</div>
+      <div class="menuButtonTitle">Afleveringer</div>
+      <div class="menuButtonText">Tæl point for holdene</div>
+    </button>
+
+    <button class="menuButton" onclick="showScreen('tid')">
+      <div class="menuButtonIcon">⏱️</div>
+      <div class="menuButtonTitle">På tid</div>
+      <div class="menuButtonText">Mål aktiv tid for hvert hold</div>
+    </button>
+
+    <button class="menuButton" onclick="showScreen('trekant')">
+      <div class="menuButtonIcon">🔺</div>
+      <div class="menuButtonTitle">Trekant</div>
+      <div class="menuButtonText">Bonus ved tre tryk i træk</div>
+    </button>
+
+    <button class="menuButton" onclick="showScreen('stafet')">
+      <div class="menuButtonIcon">🏃</div>
+      <div class="menuButtonTitle">Stafet</div>
+      <div class="menuButtonText">Start og stop tider for holdene</div>
+    </button>
+
+  </div>
 
 </div>
 
