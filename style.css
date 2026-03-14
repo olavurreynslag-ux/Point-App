@@ -1,44 +1,58 @@
-body{
-font-family:Arial;
-text-align:center;
-background:#f4f4f4;
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 20px;
 }
 
-.screen{
-padding:20px;
+.screen {
+  margin-top: 20px;
 }
 
-.hidden{
-display:none;
+.hidden {
+  display: none;
 }
 
-button{
-width:80%;
-padding:20px;
-font-size:20px;
-margin:10px;
-border:none;
-border-radius:12px;
+button {
+  width: 80%;
+  max-width: 400px;
+  font-size: 24px;
+  padding: 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
 }
 
-.menuBtn{
-background:#8ed0ff;
+button:active {
+  transform: scale(0.97);
 }
 
-.orange{
-background:orange;
+.orange {
+  background: orange;
 }
 
-.yellow{
-background:gold;
+.yellow {
+  background: gold;
+  color: black;
 }
 
-.blue{
-background:dodgerblue;
-color:white;
+.blue {
+  background: #2196f3;
 }
 
-.green{
-background:green;
-color:white;
+.green {
+  background: green;
+}
+
+.menuButton {
+  background: #6ec6ff;
+  color: black;
+}
+
+.stopped {
+  background: gray !important;
+  color: white !important;
 }
