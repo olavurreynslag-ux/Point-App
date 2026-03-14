@@ -51,27 +51,31 @@
 <!-- AFLEVERINGER -->
 <div id="afleveringer" class="screen hidden">
 
-<h1>Afleveringer</h1>
+  <h1>Afleveringer</h1>
 
-<h2>Orange</h2>
-<button class="orange" onclick="addPoint('orange',1)">+1</button>
-<button class="orange" onclick="addPoint('orange',2)">+2</button>
+  <div class="actionGroup">
+    <button class="orange bigColorButton" onclick="addPoint('orange',1)">Orange +1</button>
+    <button class="orange bigColorButton" onclick="addPoint('orange',2)">Orange +2</button>
 
-<h2>Gul</h2>
-<button class="yellow" onclick="addPoint('yellow',1)">+1</button>
-<button class="yellow" onclick="addPoint('yellow',2)">+2</button>
+    <button class="yellow bigColorButton" onclick="addPoint('yellow',1)">Gul +1</button>
+    <button class="yellow bigColorButton" onclick="addPoint('yellow',2)">Gul +2</button>
 
-<h2>Blå</h2>
-<button class="blue" onclick="addPoint('blue',1)">+1</button>
-<button class="blue" onclick="addPoint('blue',2)">+2</button>
+    <button class="blue bigColorButton" onclick="addPoint('blue',1)">Blå +1</button>
+    <button class="blue bigColorButton" onclick="addPoint('blue',2)">Blå +2</button>
+  </div>
 
-<h3>Orange: <span id="orangeScore">0</span></h3>
-<h3>Gul: <span id="yellowScore">0</span></h3>
-<h3>Blå: <span id="blueScore">0</span></h3>
+  <div class="scoreCard">
+    <div class="statRow"><span>Orange</span><strong id="orangeScore">0</strong></div>
+    <div class="statRow"><span>Gul</span><strong id="yellowScore">0</strong></div>
+    <div class="statRow"><span>Blå</span><strong id="blueScore">0</strong></div>
+  </div>
 
-<h2>Førende hold: <span id="leader">Ingen</span></h2>
+  <div class="infoCard centerText">
+    <h2>Førende hold</h2>
+    <p id="leader">Ingen</p>
+  </div>
 
-<button onclick="showScreen('menu')">Tilbage</button>
+  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
 
 </div>
 
@@ -79,22 +83,31 @@
 <!-- PÅ TID -->
 <div id="tid" class="screen hidden">
 
-<h1>På tid</h1>
+  <h1>På tid</h1>
 
-<button class="orange" onclick="activateColor('orange')">Orange</button>
-<button class="yellow" onclick="activateColor('yellow')">Gul</button>
-<button class="blue" onclick="activateColor('blue')">Blå</button>
+  <div class="actionGroup three">
+    <button class="orange bigColorButton" onclick="activateColor('orange')">Orange</button>
+    <button class="yellow bigColorButton" onclick="activateColor('yellow')">Gul</button>
+    <button class="blue bigColorButton" onclick="activateColor('blue')">Blå</button>
+  </div>
 
-<h3>Orange tid: <span id="orangeTime">00</span></h3>
-<h3>Gul tid: <span id="yellowTime">00</span></h3>
-<h3>Blå tid: <span id="blueTime">00</span></h3>
+  <div class="timeCard">
+    <div class="statRow"><span>Orange tid</span><strong id="orangeTime">00</strong></div>
+    <div class="statRow"><span>Gul tid</span><strong id="yellowTime">00</strong></div>
+    <div class="statRow"><span>Blå tid</span><strong id="blueTime">00</strong></div>
+  </div>
 
-<button onclick="pauseResume()" id="pauseBtn">Pause</button>
-<button onclick="stopGame()">Stop</button>
+  <div class="actionGroup">
+    <button class="controlButton" id="pauseBtn" onclick="pauseResume()">Pause</button>
+    <button class="controlButton" onclick="stopGame()">Stop</button>
+  </div>
 
-<h2 id="winner"></h2>
+  <div class="infoCard centerText">
+    <h2>Resultat</h2>
+    <p id="winner"></p>
+  </div>
 
-<button onclick="showScreen('menu')">Tilbage</button>
+  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
 
 </div>
 
@@ -102,19 +115,26 @@
 <!-- TREKANT -->
 <div id="trekant" class="screen hidden">
 
-<h1>Trekant</h1>
+  <h1>Trekant</h1>
 
-<button class="orange" onclick="trekantClick('orange')">Orange</button>
-<button class="yellow" onclick="trekantClick('yellow')">Gul</button>
-<button class="blue" onclick="trekantClick('blue')">Blå</button>
+  <div class="actionGroup three">
+    <button class="orange bigColorButton" onclick="trekantClick('orange')">Orange</button>
+    <button class="yellow bigColorButton" onclick="trekantClick('yellow')">Gul</button>
+    <button class="blue bigColorButton" onclick="trekantClick('blue')">Blå</button>
+  </div>
 
-<h3>Orange: <span id="tOrange">0</span></h3>
-<h3>Gul: <span id="tYellow">0</span></h3>
-<h3>Blå: <span id="tBlue">0</span></h3>
+  <div class="scoreCard">
+    <div class="statRow"><span>Orange</span><strong id="tOrange">0</strong></div>
+    <div class="statRow"><span>Gul</span><strong id="tYellow">0</strong></div>
+    <div class="statRow"><span>Blå</span><strong id="tBlue">0</strong></div>
+  </div>
 
-<h2>Førende: <span id="tLeader">Ingen</span></h2>
+  <div class="infoCard centerText">
+    <h2>Førende</h2>
+    <p id="tLeader">Ingen</p>
+  </div>
 
-<button onclick="showScreen('menu')">Tilbage</button>
+  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
 
 </div>
 
