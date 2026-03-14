@@ -193,13 +193,16 @@ h1 {
 .iconImage {
   display: block;
   width: 100%;
-  max-width: 200x;
+  max-width: 260x;
   height: auto;
 }
 @media (max-width: 480px) {
   .iconGrid {
-    gap: 4px;
-    max-width: 350px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 520px;
+    margin: 0 auto:
   }
 
   .iconImage {
