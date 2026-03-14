@@ -1,4 +1,4 @@
-/ SKÆRME
+// SKÆRME
 
 function showScreen(id){
 
