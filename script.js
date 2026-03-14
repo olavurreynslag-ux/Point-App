@@ -191,15 +191,19 @@ function startStafet() {
 
 function stopYellow() {
   yellowRunning = false;
-  document.getElementById("yellowBtn").classList.add("stopped");
+
+  const yellowBtn = document.getElementById("yellowBtn");
+  yellowBtn.classList.add("stopped");
 }
 
 function stopGreen() {
   greenRunning = false;
-  document.getElementById("greenBtn").classList.add("stopped");
-}
-function resetStafet() {
 
+  const greenBtn = document.getElementById("greenBtn");
+  greenBtn.classList.add("stopped");
+}
+
+function resetStafet() {
   clearInterval(stafetTimer);
 
   yellowRunning = false;
@@ -216,5 +220,4 @@ function resetStafet() {
 
   yellowBtn.classList.remove("stopped");
   greenBtn.classList.remove("stopped");
-
 }
