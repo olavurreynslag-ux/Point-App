@@ -1,31 +1,116 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Point-app</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idræts App</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Point-app</h1>
-  <h2>Førende hold: <span id="leader">Uafgjort</span></h2>
 
-<h2>Tid: <span id="timer">00:00</span></h2>
+<!-- FORSIDE -->
+<div id="menu" class="screen">
 
-<button id="startTimer">Start</button>
-<button id="stopTimer">Stop</button>
-<button id="resetTimer">Reset</button>
+<h1>Vælg aktivitet</h1>
 
-<button id="resetPoints">Nulstil point</button>
+<button class="menuBtn" onclick="showScreen('afleveringer')">Afleveringer</button>
+<button class="menuBtn" onclick="showScreen('tid')">På tid</button>
+<button class="menuBtn" onclick="showScreen('trekant')">Trekant</button>
+<button class="menuBtn" onclick="showScreen('stafet')">Stafet</button>
 
-  <button id="orangeBtn">Orange hold</button>
-  <button id="yellowBtn">Gult hold</button>
-  <button id="blueBtn">Blåt hold</button>
+</div>
 
-  <p>Orange: <span id="orangeScore">0</span></p>
-  <p>Gul: <span id="yellowScore">0</span></p>
-  <p>Blå: <span id="blueScore">0</span></p>
 
-  <script src="script.js"></script>
+<!-- AFLEVERINGER -->
+<div id="afleveringer" class="screen hidden">
+
+<h1>Afleveringer</h1>
+
+<h2>Orange</h2>
+<button class="orange" onclick="addPoint('orange',1)">+1</button>
+<button class="orange" onclick="addPoint('orange',2)">+2</button>
+
+<h2>Gul</h2>
+<button class="yellow" onclick="addPoint('yellow',1)">+1</button>
+<button class="yellow" onclick="addPoint('yellow',2)">+2</button>
+
+<h2>Blå</h2>
+<button class="blue" onclick="addPoint('blue',1)">+1</button>
+<button class="blue" onclick="addPoint('blue',2)">+2</button>
+
+<h3>Orange: <span id="orangeScore">0</span></h3>
+<h3>Gul: <span id="yellowScore">0</span></h3>
+<h3>Blå: <span id="blueScore">0</span></h3>
+
+<h2>Førende hold: <span id="leader">Ingen</span></h2>
+
+<button onclick="showScreen('menu')">Tilbage</button>
+
+</div>
+
+
+<!-- PÅ TID -->
+<div id="tid" class="screen hidden">
+
+<h1>På tid</h1>
+
+<button class="orange" onclick="activateColor('orange')">Orange</button>
+<button class="yellow" onclick="activateColor('yellow')">Gul</button>
+<button class="blue" onclick="activateColor('blue')">Blå</button>
+
+<h3>Orange tid: <span id="orangeTime">00</span></h3>
+<h3>Gul tid: <span id="yellowTime">00</span></h3>
+<h3>Blå tid: <span id="blueTime">00</span></h3>
+
+<button onclick="pauseResume()" id="pauseBtn">Pause</button>
+<button onclick="stopGame()">Stop</button>
+
+<h2 id="winner"></h2>
+
+<button onclick="showScreen('menu')">Tilbage</button>
+
+</div>
+
+
+<!-- TREKANT -->
+<div id="trekant" class="screen hidden">
+
+<h1>Trekant</h1>
+
+<button class="orange" onclick="trekantClick('orange')">Orange</button>
+<button class="yellow" onclick="trekantClick('yellow')">Gul</button>
+<button class="blue" onclick="trekantClick('blue')">Blå</button>
+
+<h3>Orange: <span id="tOrange">0</span></h3>
+<h3>Gul: <span id="tYellow">0</span></h3>
+<h3>Blå: <span id="tBlue">0</span></h3>
+
+<h2>Førende: <span id="tLeader">Ingen</span></h2>
+
+<button onclick="showScreen('menu')">Tilbage</button>
+
+</div>
+
+
+<!-- STAFET -->
+<div id="stafet" class="screen hidden">
+
+<h1>Stafet</h1>
+
+<button onclick="startStafet()">Start</button>
+
+<button class="yellow" onclick="stopYellow()">Gul: <span id="yellowStafet">0</span></button>
+<button class="green" onclick="stopGreen()">Grøn: <span id="greenStafet">0</span></button>
+
+<button onclick="resetStafet()">Reset</button>
+
+<button onclick="showScreen('menu')">Tilbage</button>
+
+</div>
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
