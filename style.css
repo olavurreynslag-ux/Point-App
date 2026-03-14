@@ -62,4 +62,65 @@ button:active {
   background: gray;
   color: white;
 }
+h1 {
+  color: #12344d;
+}
 
+.infoCard h2,
+.scoreCard h2,
+.timeCard h2 {
+  margin-top: 0;
+}
+
+.infoCard p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin: 6px 0 0;
+}
+
+.bigColorButton {
+  min-height: 88px;
+  font-size: 1.15rem;
+  width: 100%;
+}
+
+.controlButton {
+  background: #ffffff;
+  color: #12344d;
+  font-size: 1.05rem;
+  min-height: 64px;
+}
+
+.backButton {
+  background: #12344d;
+  color: white;
+  font-size: 1.05rem;
+  min-height: 64px;
+}
+
+.scoreCard strong,
+.timeCard strong {
+  font-size: 1.3rem;
+}
+
+#yellowBtn,
+#greenBtn {
+  min-height: 110px;
+  font-size: 1.2rem;
+}
+
+#yellowBtn.stopped,
+#greenBtn.stopped {
+  background: #8f8f8f;
+  color: white;
+}
+
+.actionGroup {
+  margin-top: 18px;
+}
+
+.scoreCard,
+.timeCard,
+.infoCard {
+  backdrop-filter: blur(4px);
+}
