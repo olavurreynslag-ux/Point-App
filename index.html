@@ -120,20 +120,24 @@
 
 
 <div id="stafet" class="screen hidden">
+
   <h1>Stafet</h1>
 
-  <button onclick="startStafet()">Start</button>
+  <button class="controlButton" onclick="startStafet()">Start</button>
 
-  <button id="yellowBtn" class="yellow" onclick="stopYellow()">
-    Gul: <span id="yellowStafet">00:00</span>
-  </button>
+  <div class="actionGroup">
+    <button id="yellowBtn" class="yellow bigColorButton" onclick="stopYellow()">
+      Gul: <span id="yellowStafet">00:00</span>
+    </button>
 
-  <button id="greenBtn" class="green" onclick="stopGreen()">
-    Grøn: <span id="greenStafet">00:00</span>
-  </button>
+    <button id="greenBtn" class="green bigColorButton" onclick="stopGreen()">
+      Grøn: <span id="greenStafet">00:00</span>
+    </button>
+  </div>
 
-  <button onclick="resetStafet()">Reset</button>
-  <button onclick="showScreen('menu')">Tilbage</button>
+  <button class="controlButton" onclick="resetStafet()">Reset</button>
+  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
+
 </div>
 
 
