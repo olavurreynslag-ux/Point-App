@@ -24,6 +24,7 @@ button {
   border-radius: 12px;
   color: white;
   cursor: pointer;
+  background: #663336
 }
 
 button:active {
