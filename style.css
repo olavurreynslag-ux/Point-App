@@ -153,3 +153,40 @@ h1 {
   }
 
 }
+.iconGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+}
+
+.iconButton:active {
+  transform: scale(0.97);
+}
+
+.iconImage {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 28px;
+}
+
+@media (max-width: 480px) {
+  .iconGrid {
+    gap: 14px;
+  }
+
+  .iconImage {
+    max-width: 170px;
+  }
+}
