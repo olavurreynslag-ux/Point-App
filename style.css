@@ -179,7 +179,7 @@ h1 {
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.16);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  filter: drop-shadow(8px 20px 10px gray);
+  filter: drop-shadow(8px 15px 10px gray);
 }
 
 .iconButton:hover {
@@ -202,7 +202,7 @@ h1 {
   .iconGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 30px;
     max-width: 520px;
     margin: 0 auto:
   }
