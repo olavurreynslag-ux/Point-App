@@ -134,7 +134,7 @@ h1 {
 .scoreCard,
 .timeCard,
 .infoCard {
-  backdrop-filter: blur(4px);
+ backdrop-filter: blur(4px);
 }
 @media screen and (orientation: landscape) {
 
@@ -179,7 +179,7 @@ h1 {
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.16);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  filter: drop-shadow(8px 8px 10px gray);
+  filter: drop-shadow(8px 20px 10px gray);
 }
 
 .iconButton:hover {
