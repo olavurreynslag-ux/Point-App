@@ -195,6 +195,7 @@ h1 {
   width: 100%;
   max-width: 260x;
   height: auto;
+  filter: drop-shadow(8px 8px 10px gray);
 }
 @media (max-width: 480px) {
   .iconGrid {
