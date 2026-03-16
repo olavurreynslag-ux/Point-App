@@ -5,13 +5,17 @@ const winSound = new Audio("winning.mp3");
 const winSound = new Audio("reset.mp3");
 
 /* ---------- Generelt ---------- */
-function showScreen(screenId) {
-  screens.forEach(screen => screen.classList.add("hidden"));
-  document.getElementById(screenId).classList.remove("hidden");
-}
 function playSound(sound) {
   sound.currentTime = 0;
   sound.play();
+}
+
+function showScreen(screenId) {
+  playSound(clickSound);
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.add("hidden");
+  });
+  document.getElementById(screenId).classList.remove("hidden");
 }
 
 /* ---------- AFLEVERINGER ---------- */
@@ -24,15 +28,6 @@ function resetAfleveringerWinner() {
     winnerEl.classList.add("hidden");
     buttonEl.classList.remove("hasWinner");
   });
-}
-function showScreen(screenId) {
-  playSound(clickSound);
-
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.add("hidden");
-  });
-
-  document.getElementById(screenId).classList.remove("hidden");
 }
 
 function addPoint(color, points) {
