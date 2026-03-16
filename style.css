@@ -194,9 +194,9 @@ button:active {
 .actionGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  width: 90vw;
-  max-width: 420px;
+  gap: 10px;
+  width: 60vw;
+  max-width: 300px;
   margin: 0 auto;
 }
 
