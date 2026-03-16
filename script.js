@@ -84,6 +84,14 @@ function finishAfleveringerGame() {
     blueButton.classList.add("hasWinner");
   }
 }
+function resetAfleveringerWinner() {
+  ["orange", "yellow", "blue"].forEach(color => {
+    document.getElementById(color + "Winner").classList.add("hidden");
+    document.getElementById(color + "Score")
+      .closest(".scoreIconButton")
+      .classList.remove("hasWinner");
+  });
+}
 
 
 // PÅ TID
