@@ -307,6 +307,13 @@ button:active {
   width: 100%;
   max-width: 70px;
   min-width: 60px;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
+  padding: 0;
 }
 
 .smallBottomIcon .iconImage {
