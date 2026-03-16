@@ -1,4 +1,8 @@
 const screens = document.querySelectorAll(".screen");
+const clickSound = new Audio("click.mp3");
+const pointSound = new Audio("point.mp3");
+const winSound = new Audio("winning.mp3");
+const winSound = new Audio("reset.mp3");
 
 /* ---------- Generelt ---------- */
 function showScreen(screenId) {
