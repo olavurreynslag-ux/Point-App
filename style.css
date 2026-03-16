@@ -247,4 +247,93 @@ h1 {
     bottom: 8px;
     font-size: 1.8rem;
   }
+  .afleveringerScreen {
+  position: relative;
+}
+
+.bottomButtonRow {
+  position: fixed;
+  left: 50%;
+  bottom: 20vh; /* cirka en femtedel op fra bunden */
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.smallBottomIcon {
+  width: 30vw;
+  max-width: 120px;
+  min-width: 85px;
+}
+
+.smallBottomIcon .iconImage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* scoretal inde i ikon */
+.scoreOverlay {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: block;
+  pointer-events: none;
+
+  color: white;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.75),
+    0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* vindertekst inde i ikon */
+.winnerOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  pointer-events: none;
+
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.85),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+/* skjul score når vinder vises */
+.scoreIconButton.hasWinner .scoreOverlay {
+  display: none;
+}
+
+.scoreIconButton.hasWinner .winnerOverlay {
+  display: flex;
+}
+
+@media (max-width: 480px) {
+  .smallBottomIcon {
+    width: 26vw;
+    max-width: 105px;
+    min-width: 78px;
+  }
+
+  .winnerOverlay {
+    font-size: 0.95rem;
+  }
+}
 }
