@@ -41,38 +41,53 @@
 
 
 <!-- AFLEVERINGER -->
-<div id="afleveringer" class="screen hidden">
+<div id="afleveringer" class="screen hidden afleveringerScreen">
 
-<h1>Afleveringer</h1>
+  <h1>Afleveringer</h1>
 
-<div class="actionGrid">
+  <div class="actionGrid">
 
-  <button class="iconButton scoreIconButton" onclick="addPoint('orange',1)">
-    <img src="Orange.png" alt="Orange" class="iconImage">
-    <span class="scoreOverlay" id="orangeScore">0</span>
-  </button>
+    <button class="iconButton scoreIconButton" onclick="addPoint('orange',1)">
+      <img src="Orange.png" alt="Orange" class="iconImage">
+      <span class="scoreOverlay" id="orangeScore">0</span>
+      <span class="winnerOverlay hidden" id="orangeWinner">VINDER</span>
+    </button>
 
-  <button class="iconButton scoreIconButton" onclick="addPoint('yellow',1)">
-    <img src="gul.png" alt="Gul" class="iconImage">
-    <span class="scoreOverlay" id="yellowScore">0</span>
-  </button>
+    <button class="iconButton scoreIconButton" onclick="addPoint('yellow',1)">
+      <img src="gul.png" alt="Gul" class="iconImage">
+      <span class="scoreOverlay" id="yellowScore">0</span>
+      <span class="winnerOverlay hidden" id="yellowWinner">VINDER</span>
+    </button>
 
-  <button class="iconButton scoreIconButton" onclick="addPoint('blue',1)">
-    <img src="blaa.png" alt="Blå" class="iconImage">
-    <span class="scoreOverlay" id="blueScore">0</span>
-  </button>
+    <button class="iconButton scoreIconButton" onclick="addPoint('blue',1)">
+      <img src="blaa.png" alt="Blå" class="iconImage">
+      <span class="scoreOverlay" id="blueScore">0</span>
+      <span class="winnerOverlay hidden" id="blueWinner">VINDER</span>
+    </button>
 
-  <button class="iconButton" onclick="addPoint('orange',2)">
-    <img src="plusto.png" alt="+2" class="iconImage">
-  </button>
+    <button class="iconButton" onclick="addPoint('orange',2)">
+      <img src="plusto.png" alt="+2" class="iconImage">
+    </button>
 
-  <button class="iconButton" onclick="addPoint('yellow',2)">
-    <img src="plusto.png" alt="+2" class="iconImage">
-  </button>
+    <button class="iconButton" onclick="addPoint('yellow',2)">
+      <img src="plusto.png" alt="+2" class="iconImage">
+    </button>
 
-  <button class="iconButton" onclick="addPoint('blue',2)">
-    <img src="plusto.png" alt="+2" class="iconImage">
-  </button>
+    <button class="iconButton" onclick="addPoint('blue',2)">
+      <img src="plusto.png" alt="+2" class="iconImage">
+    </button>
+
+  </div>
+
+  <div class="bottomButtonRow">
+    <button class="iconButton smallBottomIcon" onclick="showScreen('menu')">
+      <img src="tilbage.png" alt="Tilbage" class="iconImage">
+    </button>
+
+    <button class="iconButton smallBottomIcon" onclick="finishAfleveringerGame()">
+      <img src="stop.png" alt="Afslut spil" class="iconImage">
+    </button>
+  </div>
 
 </div>
 
