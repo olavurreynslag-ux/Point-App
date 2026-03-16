@@ -293,17 +293,18 @@ button:active {
   left: 50%;
   bottom: 20vh;
   transform: translateX(-50%);
-  display: flex;
-  gap: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 14px;
   align-items: center;
   justify-content: center;
   z-index: 20;
 }
 
 .smallBottomIcon {
-  width: 30vw;
-  max-width: 120px;
-  min-width: 85px;
+  width: 21vw;
+  max-width: 82px;
+  min-width: 60px;
 }
 
 .smallBottomIcon .iconImage {
