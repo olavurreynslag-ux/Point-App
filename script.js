@@ -9,6 +9,10 @@ function showScreen(screenId) {
   screens.forEach(screen => screen.classList.add("hidden"));
   document.getElementById(screenId).classList.remove("hidden");
 }
+function playSound(sound) {
+  sound.currentTime = 0;
+  sound.play();
+}
 
 /* ---------- AFLEVERINGER ---------- */
 function resetAfleveringerWinner() {
