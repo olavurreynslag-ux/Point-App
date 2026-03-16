@@ -43,36 +43,49 @@
 <!-- AFLEVERINGER -->
 <div id="afleveringer" class="screen hidden">
 
-  <h1>Afleveringer</h1>
+<h1>Afleveringer</h1>
 
-  <div class="actionGrid">
-    <button class="iconButton scoreIconButton" onclick="addPoint('orange',1)">
-      <img src="Orange.png" alt="Orange" class="iconImage">
-      <span class="scoreOverlay" id="orangeScore">0</span>
-    </button>
+<div class="actionGrid">
 
-    <button class="iconButton scoreIconButton" onclick="addPoint('yellow',1)">
-      <img src="gul.png" alt="Gul" class="iconImage">
-      <span class="scoreOverlay" id="yellowScore">0</span>
-    </button>
+<button class="iconButton scoreIconButton" onclick="addPoint('orange',1)">
+<img src="Orange.png" class="iconImage">
+<span class="scoreOverlay" id="orangeScore">0</span>
+</button>
 
-    <button class="iconButton scoreIconButton" onclick="addPoint('blue',1)">
-      <img src="blaa.png" alt="Blå" class="iconImage">
-      <span class="scoreOverlay" id="blueScore">0</span>
-    </button>
+<button class="iconButton scoreIconButton" onclick="addPoint('yellow',1)">
+<img src="gul.png" class="iconImage">
+<span class="scoreOverlay" id="yellowScore">0</span>
+</button>
 
-    <button class="iconButton" onclick="addPoint('orange',2)">
-      <img src="plusto.png" alt="+2" class="iconImage">
-    </button>
+<button class="iconButton scoreIconButton" onclick="addPoint('blue',1)">
+<img src="blaa.png" class="iconImage">
+<span class="scoreOverlay" id="blueScore">0</span>
+</button>
 
-    <button class="iconButton" onclick="addPoint('yellow',2)">
-      <img src="plusto.png" alt="+2" class="iconImage">
-    </button>
+<button class="iconButton" onclick="addPoint('orange',2)">
+<img src="plusto.png" class="iconImage">
+</button>
 
-    <button class="iconButton" onclick="addPoint('blue',2)">
-      <img src="plusto.png" alt="+2" class="iconImage">
-    </button>
-  </div>
+<button class="iconButton" onclick="addPoint('yellow',2)">
+<img src="plusto.png" class="iconImage">
+</button>
+
+<button class="iconButton" onclick="addPoint('blue',2)">
+<img src="plusto.png" class="iconImage">
+</button>
+
+</div>
+
+<div class="infoCard centerText">
+<h2>Førende hold</h2>
+<p id="leader">Ingen</p>
+</div>
+
+<button class="iconButton" onclick="showScreen('menu')">
+<img src="tilbage.png" class="iconImage">
+</button>
+
+</div>
 
   <div class="infoCard centerText">
     <h2>Førende hold</h2>
