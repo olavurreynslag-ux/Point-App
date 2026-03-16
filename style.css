@@ -48,7 +48,7 @@ button:active {
 
 .green {
   background: green;
-  color : white;
+  color: white;
 }
 
 .menuButton {
@@ -56,14 +56,12 @@ button:active {
   color: black;
 }
 
-#yellowBtn.stopped {
-  background: gray;
-  color: white;
-}
+#yellowBtn.stopped,
 #greenBtn.stopped {
   background: gray;
   color: white;
 }
+
 h1 {
   color: #12344d;
 }
@@ -79,6 +77,7 @@ h1 {
   font-weight: bold;
   margin: 6px 0 0;
 }
+
 .bigColorButton,
 .controlButton,
 .backButton,
@@ -134,29 +133,9 @@ h1 {
 .scoreCard,
 .timeCard,
 .infoCard {
- backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
-@media screen and (orientation: landscape) {
 
-  body::before {
-    content: "Drej telefonen til portræt";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: transparent;
-    color: white;
-    font-size: 28 px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    text-align: center;
-    padding: 40 px;
-  }
-
-}
 .iconGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -166,16 +145,19 @@ h1 {
   justify-items: center;
   align-items: center;
 }
-.actionGrid{
-  display:grid;
+
+.actionGrid {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  width: 90w;
+  width: 90vw;
   max-width: 420px;
+  margin: 0 auto;
 }
 
 .iconButton {
-  width: auto;
+  position: relative;
+  width: 100%;
   max-width: none;
   padding: 0;
   margin: 0;
@@ -184,14 +166,14 @@ h1 {
   cursor: pointer;
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.16);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   filter: drop-shadow(8px 15px 10px gray);
 }
 
 .iconButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.18);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
 .iconButton:active {
@@ -201,39 +183,68 @@ h1 {
 .iconImage {
   display: block;
   width: 100%;
-  max-width: 260x;
   height: auto;
-  
 }
+
+.scoreIconButton {
+  position: relative;
+  overflow: hidden;
+}
+
+/* scoretallet placeres inde i ikonet */
+.scoreOverlay {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  display: block;
+  pointer-events: none;
+
+  color: white;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.75),
+    0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (orientation: landscape) {
+  body::before {
+    content: "Drej telefonen til portræt";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    text-align: center;
+    padding: 40px;
+  }
+}
+
 @media (max-width: 480px) {
   .iconGrid {
-    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
     max-width: 520px;
-    margin: 0 auto:
+    margin: 0 auto;
   }
 
   .iconImage {
     max-width: 155px;
   }
-  .scoreIconButton {
-  position: relative;
-  overflow: hidden;
-      }
-  .scoreOverlay{
-position:absolute;
-top:8px;
-right:10px;
 
-background:rgba(0,0,0,0.55);
-padding:6px 10px;
-border-radius:12px;
-
-font-size:1.6rem;
-font-weight:900;
-color:white;
-}
-    }    
+  .scoreOverlay {
+    bottom: 8px;
+    font-size: 1.8rem;
   }
-}  
+}
