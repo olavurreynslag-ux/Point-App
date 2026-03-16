@@ -303,8 +303,8 @@ button:active {
 
 .smallBottomIcon {
   width: 10vw;
-  max-width: 82px;
-  min-width: 60px;
+  max-width: 60px;
+  min-width: 40px;
 }
 
 .smallBottomIcon .iconImage {
