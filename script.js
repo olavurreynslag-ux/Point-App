@@ -21,8 +21,18 @@ function resetAfleveringerWinner() {
     buttonEl.classList.remove("hasWinner");
   });
 }
+function showScreen(screenId) {
+  playSound(clickSound);
+
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.add("hidden");
+  });
+
+  document.getElementById(screenId).classList.remove("hidden");
+}
 
 function addPoint(color, points) {
+   playSound(pointSound);
   resetAfleveringerWinner();
 
   const scoreElement = document.getElementById(color + "Score");
