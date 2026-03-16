@@ -25,6 +25,13 @@ function addPoint(color, points) {
   const currentScore = parseInt(scoreElement.textContent, 10) || 0;
   scoreElement.textContent = currentScore + points;
 }
+function resetAfleveringerScore() {
+  document.getElementById("orangeScore").textContent = "0";
+  document.getElementById("yellowScore").textContent = "0";
+  document.getElementById("blueScore").textContent = "0";
+
+  resetAfleveringerWinner();
+}
 
 function finishAfleveringerGame() {
   const orange = parseInt(document.getElementById("orangeScore").textContent, 10) || 0;
