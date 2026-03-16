@@ -1,218 +1,159 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Idræts App</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idræts App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- FORSIDE -->
-<div id="menu" class="screen">
+  <!-- FORSIDE -->
+  <div id="menu" class="screen">
+    <div class="menuHeader">
+      <h1>Idræts App</h1>
+      <p>Vælg aktivitet</p>
+    </div>
 
-  <div class="menuHeader">
-    <h1>Idræts App</h1>
-    <p>Vælg aktivitet</p>
+    <div class="iconGrid">
+      <button class="iconButton" onclick="showScreen('afleveringer')">
+        <img src="afleveringer.png" alt="Afleveringer" class="iconImage">
+      </button>
+
+      <button class="iconButton" onclick="showScreen('tid')">
+        <img src="paatid.png" alt="På tid" class="iconImage">
+      </button>
+
+      <button class="iconButton" onclick="showScreen('trekant')">
+        <img src="trekant.png" alt="Trekant" class="iconImage">
+      </button>
+
+      <button class="iconButton" onclick="showScreen('stafet')">
+        <img src="stafet.png" alt="Stafet" class="iconImage">
+      </button>
+    </div>
   </div>
 
-  <div class="iconGrid">
+  <!-- AFLEVERINGER -->
+  <div id="afleveringer" class="screen hidden afleveringerScreen">
+    <h1>Afleveringer</h1>
 
-    <button class="iconButton" onclick="showScreen('afleveringer')">
-      <img src="afleveringer.png" alt="Afleveringer" class="iconImage">
-    </button>
+    <div class="actionGrid">
+      <button class="iconButton scoreIconButton" onclick="addPoint('orange', 1)">
+        <img src="Orange.png" alt="Orange" class="iconImage">
+        <span class="scoreOverlay" id="orangeScore">0</span>
+        <span class="winnerOverlay hidden" id="orangeWinner">VINDER</span>
+      </button>
 
-    <button class="iconButton" onclick="showScreen('tid')">
-      <img src="paatid.png" alt="På tid" class="iconImage">
-    </button>
+      <button class="iconButton scoreIconButton" onclick="addPoint('yellow', 1)">
+        <img src="gul.png" alt="Gul" class="iconImage">
+        <span class="scoreOverlay" id="yellowScore">0</span>
+        <span class="winnerOverlay hidden" id="yellowWinner">VINDER</span>
+      </button>
 
-    <button class="iconButton" onclick="showScreen('trekant')">
-      <img src="trekant.png" alt="Trekant" class="iconImage">
-    </button>
+      <button class="iconButton scoreIconButton" onclick="addPoint('blue', 1)">
+        <img src="blaa.png" alt="Blå" class="iconImage">
+        <span class="scoreOverlay" id="blueScore">0</span>
+        <span class="winnerOverlay hidden" id="blueWinner">VINDER</span>
+      </button>
 
-    <button class="iconButton" onclick="showScreen('stafet')">
-      <img src="stafet.png" alt="Stafet" class="iconImage">
-    </button>
+      <button class="iconButton" onclick="addPoint('orange', 2)">
+        <img src="plusto.png" alt="+2 Orange" class="iconImage">
+      </button>
 
+      <button class="iconButton" onclick="addPoint('yellow', 2)">
+        <img src="plusto.png" alt="+2 Gul" class="iconImage">
+      </button>
+
+      <button class="iconButton" onclick="addPoint('blue', 2)">
+        <img src="plusto.png" alt="+2 Blå" class="iconImage">
+      </button>
+    </div>
+
+    <div class="bottomButtonRow">
+      <button class="iconButton smallBottomIcon" onclick="showScreen('menu')">
+        <img src="tilbage.png" alt="Tilbage" class="iconImage">
+      </button>
+
+      <button class="iconButton smallBottomIcon" onclick="finishAfleveringerGame()">
+        <img src="stop.png" alt="Afslut spil" class="iconImage">
+      </button>
+    </div>
   </div>
 
-</div>
+  <!-- PÅ TID -->
+  <div id="tid" class="screen hidden">
+    <h1>På tid</h1>
 
+    <div class="actionGroup three">
+      <button class="orange bigColorButton" onclick="activateColor('orange')">Orange</button>
+      <button class="yellow bigColorButton" onclick="activateColor('yellow')">Gul</button>
+      <button class="blue bigColorButton" onclick="activateColor('blue')">Blå</button>
+    </div>
 
-<!-- AFLEVERINGER -->
-<div id="afleveringer" class="screen hidden afleveringerScreen">
+    <div class="timeCard card">
+      <div class="statRow"><span>Orange tid</span><strong id="orangeTime">00</strong></div>
+      <div class="statRow"><span>Gul tid</span><strong id="yellowTime">00</strong></div>
+      <div class="statRow"><span>Blå tid</span><strong id="blueTime">00</strong></div>
+    </div>
 
-  <h1>Afleveringer</h1>
+    <div class="actionGroup">
+      <button class="controlButton" id="pauseBtn" onclick="pauseResume()">Pause</button>
+      <button class="controlButton" onclick="stopGame()">Stop</button>
+    </div>
 
-  <div class="actionGrid">
+    <div class="infoCard card centerText">
+      <h2>Resultat</h2>
+      <p id="winner">Ingen endnu</p>
+    </div>
 
-    <button class="iconButton scoreIconButton" onclick="addPoint('orange',1)">
-      <img src="Orange.png" alt="Orange" class="iconImage">
-      <span class="scoreOverlay" id="orangeScore">0</span>
-      <span class="winnerOverlay hidden" id="orangeWinner">VINDER</span>
-    </button>
-
-    <button class="iconButton scoreIconButton" onclick="addPoint('yellow',1)">
-      <img src="gul.png" alt="Gul" class="iconImage">
-      <span class="scoreOverlay" id="yellowScore">0</span>
-      <span class="winnerOverlay hidden" id="yellowWinner">VINDER</span>
-    </button>
-
-    <button class="iconButton scoreIconButton" onclick="addPoint('blue',1)">
-      <img src="blaa.png" alt="Blå" class="iconImage">
-      <span class="scoreOverlay" id="blueScore">0</span>
-      <span class="winnerOverlay hidden" id="blueWinner">VINDER</span>
-    </button>
-
-    <button class="iconButton" onclick="addPoint('orange',2)">
-      <img src="plusto.png" alt="+2" class="iconImage">
-    </button>
-
-    <button class="iconButton" onclick="addPoint('yellow',2)">
-      <img src="plusto.png" alt="+2" class="iconImage">
-    </button>
-
-    <button class="iconButton" onclick="addPoint('blue',2)">
-      <img src="plusto.png" alt="+2" class="iconImage">
-    </button>
-
+    <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
   </div>
 
-  <div class="bottomButtonRow">
-    <button class="iconButton smallBottomIcon" onclick="showScreen('menu')">
-      <img src="tilbage.png" alt="Tilbage" class="iconImage">
-    </button>
+  <!-- TREKANT -->
+  <div id="trekant" class="screen hidden">
+    <h1>Trekant</h1>
 
-    <button class="iconButton smallBottomIcon" onclick="finishAfleveringerGame()">
-      <img src="stop.png" alt="Afslut spil" class="iconImage">
-    </button>
+    <div class="actionGroup three">
+      <button class="orange bigColorButton" onclick="trekantClick('orange')">Orange</button>
+      <button class="yellow bigColorButton" onclick="trekantClick('yellow')">Gul</button>
+      <button class="blue bigColorButton" onclick="trekantClick('blue')">Blå</button>
+    </div>
+
+    <div class="scoreCard card">
+      <div class="statRow"><span>Orange</span><strong id="tOrange">0</strong></div>
+      <div class="statRow"><span>Gul</span><strong id="tYellow">0</strong></div>
+      <div class="statRow"><span>Blå</span><strong id="tBlue">0</strong></div>
+    </div>
+
+    <div class="infoCard card centerText">
+      <h2>Førende</h2>
+      <p id="tLeader">Ingen</p>
+    </div>
+
+    <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
   </div>
 
-</div>
+  <!-- STAFET -->
+  <div id="stafet" class="screen hidden">
+    <h1>Stafet</h1>
 
-<div class="infoCard centerText">
-<h2>Førende hold</h2>
-<p id="leader">Ingen</p>
-</div>
+    <button class="controlButton" onclick="startStafet()">Start</button>
 
-<button class="iconButton" onclick="showScreen('menu')">
-<img src="tilbage.png" class="iconImage">
-</button>
+    <div class="actionGroup">
+      <button id="yellowBtn" class="yellow bigColorButton" onclick="stopYellow()">
+        Gul: <span id="yellowStafet">00:00</span>
+      </button>
 
-</div>
+      <button id="greenBtn" class="green bigColorButton" onclick="stopGreen()">
+        Grøn: <span id="greenStafet">00:00</span>
+      </button>
+    </div>
 
-  <div class="infoCard centerText">
-    <h2>Førende hold</h2>
-    <p id="leader">Ingen</p>
+    <button class="controlButton" onclick="resetStafet()">Reset</button>
+    <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
   </div>
 
-  <button class="iconButton" onclick="showScreen('menu')">
-    <img src="tilbage.png" alt="tilbage" class="iconImage">
-  </button>
-
-</div>
-
- <!-- <div class="scoreCard">
-    <div class="statRow"><span>Orange</span><strong id="orangeScore">0</strong></div>
-    <div class="statRow"><span>Gul</span><strong id="yellowScore">0</strong></div>
-   <div class="statRow"><span>Blå</span><strong id="blueScore">0</strong></div>
-  </div> -->
-
-  <div class="infoCard centerText">
-    <h2>Førende hold</h2>
-    <p id="leader">Ingen</p>
-  </div>
-
-  <button class="iconButton" onclick="showScreen('menu')">
-    <img src="tilbage.png" alt="tilbage" class="iconImage">
-  </button>
-
-</div>
-
-
-<!-- PÅ TID -->
-<div id="tid" class="screen hidden">
-
-  <h1>På tid</h1>
-
-  <div class="actionGroup three">
-    <button class="orange bigColorButton" onclick="activateColor('orange')">Orange</button>
-    <button class="yellow bigColorButton" onclick="activateColor('yellow')">Gul</button>
-    <button class="blue bigColorButton" onclick="activateColor('blue')">Blå</button>
-  </div>
-
-  <div class="timeCard">
-    <div class="statRow"><span>Orange tid</span><strong id="orangeTime">00</strong></div>
-    <div class="statRow"><span>Gul tid</span><strong id="yellowTime">00</strong></div>
-    <div class="statRow"><span>Blå tid</span><strong id="blueTime">00</strong></div>
-  </div>
-
-  <div class="actionGroup">
-    <button class="controlButton" id="pauseBtn" onclick="pauseResume()">Pause</button>
-    <button class="controlButton" onclick="stopGame()">Stop</button>
-  </div>
-
-  <div class="infoCard centerText">
-    <h2>Resultat</h2>
-    <p id="winner"></p>
-  </div>
-
-  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
-
-</div>
-
-
-<!-- TREKANT -->
-<div id="trekant" class="screen hidden">
-
-  <h1>Trekant</h1>
-
-  <div class="actionGroup three">
-    <button class="orange bigColorButton" onclick="trekantClick('orange')">Orange</button>
-    <button class="yellow bigColorButton" onclick="trekantClick('yellow')">Gul</button>
-    <button class="blue bigColorButton" onclick="trekantClick('blue')">Blå</button>
-  </div>
-
-  <div class="scoreCard">
-    <div class="statRow"><span>Orange</span><strong id="tOrange">0</strong></div>
-    <div class="statRow"><span>Gul</span><strong id="tYellow">0</strong></div>
-    <div class="statRow"><span>Blå</span><strong id="tBlue">0</strong></div>
-  </div>
-
-  <div class="infoCard centerText">
-    <h2>Førende</h2>
-    <p id="tLeader">Ingen</p>
-  </div>
-
-  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
-
-</div>
-
-
-<div id="stafet" class="screen hidden">
-
-  <h1>Stafet</h1>
-
-  <button class="controlButton" onclick="startStafet()">Start</button>
-
-  <div class="actionGroup">
-    <button id="yellowBtn" class="yellow bigColorButton" onclick="stopYellow()">
-      Gul: <span id="yellowStafet">00:00</span>
-    </button>
-
-    <button id="greenBtn" class="green bigColorButton" onclick="stopGreen()">
-      Grøn: <span id="greenStafet">00:00</span>
-    </button>
-  </div>
-
-  <button class="controlButton" onclick="resetStafet()">Reset</button>
-  <button class="backButton" onclick="showScreen('menu')">Tilbage</button>
-
-</div>
-
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
