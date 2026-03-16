@@ -295,7 +295,7 @@ button:active {
 .bottomButtonRow {
   position: fixed;
   left: 50%;
-  bottom: 45vh;
+  bottom: 30vh;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
