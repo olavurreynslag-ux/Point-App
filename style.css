@@ -15,11 +15,32 @@ body {
 .screen {
   min-height: 100vh;
   padding: 24px;
+  box-sizing: border-box;
   background: transparent;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
+}
+
+h1 {
+  color: #12344d;
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 2.4rem;
+}
+
+.menuHeader {
+  text-align: left;
+  max-width: 420px;
+  margin: 0 auto 24px;
+}
+
+.menuHeader p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #12344d;
+  font-weight: 600;
 }
 
 button {
@@ -62,10 +83,6 @@ button:active {
   color: white;
 }
 
-h1 {
-  color: #12344d;
-}
-
 .infoCard h2,
 .scoreCard h2,
 .timeCard h2 {
@@ -86,7 +103,8 @@ h1 {
   max-width: 400px;
   font-size: 24px;
   padding: 20px;
-  margin: 10px;
+  margin: 10px auto;
+  display: block;
 }
 
 .bigColorButton {
@@ -130,10 +148,37 @@ h1 {
   margin-top: 18px;
 }
 
+.actionGroup.three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 420px;
+  margin: 18px auto;
+}
+
 .scoreCard,
 .timeCard,
-.infoCard {
+.infoCard,
+.card {
   backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.45);
+  border-radius: 18px;
+  padding: 16px;
+  max-width: 420px;
+  margin: 18px auto;
+}
+
+.centerText {
+  text-align: center;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 1.1rem;
 }
 
 .iconGrid {
@@ -191,7 +236,6 @@ h1 {
   overflow: hidden;
 }
 
-/* scoretallet placeres inde i ikonet */
 .scoreOverlay {
   position: absolute;
   bottom: 10px;
@@ -209,6 +253,63 @@ h1 {
   text-shadow:
     0 2px 6px rgba(0, 0, 0, 0.75),
     0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.winnerOverlay {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 6;
+  pointer-events: none;
+
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.85),
+    0 0 12px rgba(0, 0, 0, 0.55);
+}
+
+.scoreIconButton.hasWinner .scoreOverlay {
+  display: none;
+}
+
+.scoreIconButton.hasWinner .winnerOverlay {
+  display: flex;
+}
+
+.afleveringerScreen {
+  position: relative;
+  padding-bottom: 220px;
+}
+
+.bottomButtonRow {
+  position: fixed;
+  left: 50%;
+  bottom: 20vh;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.smallBottomIcon {
+  width: 30vw;
+  max-width: 120px;
+  min-width: 85px;
+}
+
+.smallBottomIcon .iconImage {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 @media screen and (orientation: landscape) {
@@ -247,85 +348,7 @@ h1 {
     bottom: 8px;
     font-size: 1.8rem;
   }
-  .afleveringerScreen {
-  position: relative;
-}
 
-.bottomButtonRow {
-  position: fixed;
-  left: 50%;
-  bottom: 20vh; /* cirka en femtedel op fra bunden */
-  transform: translateX(-50%);
-  display: flex;
-  gap: 18px;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
-
-.smallBottomIcon {
-  width: 30vw;
-  max-width: 120px;
-  min-width: 85px;
-}
-
-.smallBottomIcon .iconImage {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* scoretal inde i ikon */
-.scoreOverlay {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5;
-  display: block;
-  pointer-events: none;
-
-  color: white;
-  font-size: 2rem;
-  font-weight: 900;
-  line-height: 1;
-
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.75),
-    0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-/* vindertekst inde i ikon */
-.winnerOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 6;
-  pointer-events: none;
-
-  color: white;
-  font-size: 1.1rem;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.85),
-    0 0 12px rgba(0, 0, 0, 0.55);
-}
-
-/* skjul score når vinder vises */
-.scoreIconButton.hasWinner .scoreOverlay {
-  display: none;
-}
-
-.scoreIconButton.hasWinner .winnerOverlay {
-  display: flex;
-}
-
-@media (max-width: 480px) {
   .smallBottomIcon {
     width: 26vw;
     max-width: 105px;
@@ -335,5 +358,8 @@ h1 {
   .winnerOverlay {
     font-size: 0.95rem;
   }
-}
+
+  h1 {
+    font-size: 2rem;
+  }
 }
