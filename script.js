@@ -43,6 +43,47 @@ if(scores.blue==max)leader="Blå"
 document.getElementById("leader").textContent=leader
 
 }
+function finishAfleveringerGame() {
+  const orange = parseInt(document.getElementById("orangeScore").textContent, 10);
+  const yellow = parseInt(document.getElementById("yellowScore").textContent, 10);
+  const blue = parseInt(document.getElementById("blueScore").textContent, 10);
+
+  const orangeWinner = document.getElementById("orangeWinner");
+  const yellowWinner = document.getElementById("yellowWinner");
+  const blueWinner = document.getElementById("blueWinner");
+
+  const orangeButton = document.getElementById("orangeScore").closest(".scoreIconButton");
+  const yellowButton = document.getElementById("yellowScore").closest(".scoreIconButton");
+  const blueButton = document.getElementById("blueScore").closest(".scoreIconButton");
+
+  // nulstil først
+  orangeWinner.classList.add("hidden");
+  yellowWinner.classList.add("hidden");
+  blueWinner.classList.add("hidden");
+
+  orangeButton.classList.remove("hasWinner");
+  yellowButton.classList.remove("hasWinner");
+  blueButton.classList.remove("hasWinner");
+
+  const maxScore = Math.max(orange, yellow, blue);
+
+  if (maxScore === 0) return;
+
+  if (orange === maxScore) {
+    orangeWinner.classList.remove("hidden");
+    orangeButton.classList.add("hasWinner");
+  }
+
+  if (yellow === maxScore) {
+    yellowWinner.classList.remove("hidden");
+    yellowButton.classList.add("hasWinner");
+  }
+
+  if (blue === maxScore) {
+    blueWinner.classList.remove("hidden");
+    blueButton.classList.add("hasWinner");
+  }
+}
 
 
 // PÅ TID
