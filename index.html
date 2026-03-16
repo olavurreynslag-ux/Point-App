@@ -46,31 +46,50 @@
   <h1>Afleveringer</h1>
 
   <div class="actionGrid">
-    <button class="iconButton" onclick="addPoint('orange',1)"><div class="statRow"><span>Orange</span><strong id="orangeScore">0</strong></div>
-      <img src="Orange.png" alt="Gul" class="iconImage">
+    <button class="iconButton scoreIconButton" onclick="addPoint('orange',1)">
+      <img src="Orange.png" alt="Orange" class="iconImage">
+      <span class="scoreOverlay" id="orangeScore">0</span>
     </button>
-     <button class="iconButton" onclick="addPoint('yellow',1)">
-        <img src="gul.png" alt="+1" class="iconImage">
+
+    <button class="iconButton scoreIconButton" onclick="addPoint('yellow',1)">
+      <img src="gul.png" alt="Gul" class="iconImage">
+      <span class="scoreOverlay" id="yellowScore">0</span>
     </button>
-     <button class="iconButton" onclick="addPoint('blue',1)">
-        <img src="blaa.png" alt="+1" class="iconImage">
+
+    <button class="iconButton scoreIconButton" onclick="addPoint('blue',1)">
+      <img src="blaa.png" alt="Blå" class="iconImage">
+      <span class="scoreOverlay" id="blueScore">0</span>
     </button>
+
     <button class="iconButton" onclick="addPoint('orange',2)">
-        <img src="plusto.png" alt="+2" class="iconImage">
-    </button>  
+      <img src="plusto.png" alt="+2" class="iconImage">
+    </button>
+
     <button class="iconButton" onclick="addPoint('yellow',2)">
-        <img src="plusto.png" alt="+2" class="iconImage">
-    </button>   
+      <img src="plusto.png" alt="+2" class="iconImage">
+    </button>
+
     <button class="iconButton" onclick="addPoint('blue',2)">
-        <img src="plusto.png" alt="+2" class="iconImage">
+      <img src="plusto.png" alt="+2" class="iconImage">
     </button>
   </div>
 
- // <div class="scoreCard">
-   // <div class="statRow"><span>Orange</span><strong id="orangeScore">0</strong></div>
-   // <div class="statRow"><span>Gul</span><strong id="yellowScore">0</strong></div>
-    //<div class="statRow"><span>Blå</span><strong id="blueScore">0</strong></div>
- // </div>
+  <div class="infoCard centerText">
+    <h2>Førende hold</h2>
+    <p id="leader">Ingen</p>
+  </div>
+
+  <button class="iconButton" onclick="showScreen('menu')">
+    <img src="tilbage.png" alt="tilbage" class="iconImage">
+  </button>
+
+</div>
+
+ <!-- <div class="scoreCard">
+    <div class="statRow"><span>Orange</span><strong id="orangeScore">0</strong></div>
+    <div class="statRow"><span>Gul</span><strong id="yellowScore">0</strong></div>
+   <div class="statRow"><span>Blå</span><strong id="blueScore">0</strong></div>
+  </div> -->
 
   <div class="infoCard centerText">
     <h2>Førende hold</h2>
