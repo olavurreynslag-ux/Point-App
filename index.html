@@ -93,8 +93,12 @@
 
     <div class="activityContent">
       <div class="actionGrid">
-        <button class="bigActionButton orangeAction" onclick="activateColor('orange')">Orange</button>
-        <button class="bigActionButton yellowAction" onclick="activateColor('yellow')">Gul</button>
+        <button class="iconButton scoreIconButton" onclick="activateColor('orange')">
+          <img src="Orange.png" alt="Orange" class="iconImage">
+          <span class="scoreOverlay" id="orangeScore">00</span>
+          <span class="winnerOverlay hidden" id="yellowWinner">VINDER</span>
+        </button>
+               <button class="bigActionButton yellowAction" onclick="activateColor('yellow')">Gul</button>
         <button class="bigActionButton blueAction" onclick="activateColor('blue')">Blå</button>
 
         <button class="bigActionButton neutralAction" onclick="startTimeGame()">Start</button>
