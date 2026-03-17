@@ -96,10 +96,18 @@
         <button class="iconButton scoreIconButton" onclick="activateColor('orange')">
           <img src="Orange.png" alt="Orange" class="iconImage">
           <span class="scoreOverlay" id="orangeTime">00</span>
+          <span class="winnerOverlay hidden" id="orangeWinner">VINDER</span>
+        </button>
+         <button class="iconButton scoreIconButton" onclick="activateColor('yellow')">
+          <img src="blåå.png" alt="Orange" class="iconImage">
+          <span class="scoreOverlay" id="yellowTime">00</span>
+          <span class="winnerOverlay hidden" id="blueWinner">VINDER</span>
+        </button>
+        <button class="iconButton scoreIconButton" onclick="activateColor('blue')">
+          <img src="gul.png" alt="Orange" class="iconImage">
+          <span class="scoreOverlay" id="yellowTime">00</span>
           <span class="winnerOverlay hidden" id="yellowWinner">VINDER</span>
         </button>
-               <button class="bigActionButton yellowAction" onclick="activateColor('yellow')">Gul</button>
-        <button class="bigActionButton blueAction" onclick="activateColor('blue')">Blå</button>
 
         <button class="bigActionButton neutralAction" onclick="startTimeGame()">Start</button>
         <button class="bigActionButton neutralAction" onclick="pauseResumeTime()" id="timePauseButton">Pause</button>
