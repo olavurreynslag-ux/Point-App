@@ -2,16 +2,13 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: #1f2937;
-
   background:
-    linear-gradient(rgba(0,120,0,0.20), rgba(0,120,0,0.20)),
+    linear-gradient(rgba(0, 110, 0, 0.35), rgba(0, 110, 0, 0.35)),
     url("background.png");
-
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-
   min-height: 100vh;
 }
 
@@ -30,12 +27,13 @@ h1 {
   color: white;
   text-align: center;
   margin-top: 0;
-  margin-bottom: 16px;
-  font-size: 3.4rem;
+  margin-bottom: 20px;
+  font-size: 2.4rem;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
 }
 
 .menuHeader {
-  text-align: left;
+  text-align: center;
   max-width: 420px;
   margin: 0 auto 24px;
 }
@@ -43,146 +41,20 @@ h1 {
 .menuHeader p {
   margin: 0;
   font-size: 1.1rem;
-  color: #12344d;
+  color: white;
   font-weight: 600;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
 }
 
 button {
   border: none;
-  border-radius: 12px;
+  border-radius: 18px;
   color: white;
   cursor: pointer;
 }
 
 button:active {
   transform: scale(0.97);
-}
-
-.orange {
-  background: orange;
-}
-
-.yellow {
-  background: gold;
-  color: black;
-}
-
-.blue {
-  background: #2196f3;
-}
-
-.green {
-  background: green;
-  color: white;
-}
-
-.menuButton {
-  background: #666699;
-  color: black;
-}
-
-#yellowBtn.stopped,
-#greenBtn.stopped {
-  background: gray;
-  color: white;
-}
-
-.infoCard h2,
-.scoreCard h2,
-.timeCard h2 {
-  margin-top: 0;
-}
-
-.infoCard p {
-  font-size: 1.3rem;
-  font-weight: bold;
-  margin: 6px 0 0;
-}
-
-.bigColorButton,
-.controlButton,
-.backButton,
-.menuButton {
-  width: 80%;
-  max-width: 400px;
-  font-size: 24px;
-  padding: 20px;
-  margin: 10px auto;
-  display: block;
-}
-
-.bigColorButton {
-  min-height: 88px;
-  font-size: 1.15rem;
-  width: 100%;
-}
-
-.controlButton {
-  background: #ffffff;
-  color: #12344d;
-  font-size: 1.05rem;
-  min-height: 64px;
-}
-
-.backButton {
-  background: #12344d;
-  color: white;
-  font-size: 1.05rem;
-  min-height: 64px;
-}
-
-.scoreCard strong,
-.timeCard strong {
-  font-size: 1.3rem;
-}
-
-#yellowBtn,
-#greenBtn {
-  min-height: 110px;
-  font-size: 1.2rem;
-}
-
-#yellowBtn.stopped,
-#greenBtn.stopped {
-  background: #8f8f8f;
-  color: white;
-}
-
-.actionGroup {
-  margin-top: 18px;
-}
-
-.actionGroup.three {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  max-width: 420px;
-  margin: 18px auto;
-}
-
-.scoreCard,
-.timeCard,
-.infoCard,
-.card {
-  backdrop-filter: blur(4px);
-  background: rgba(255, 255, 255, 0.45);
-  border-radius: 18px;
-  padding: 16px;
-  max-width: 420px;
-  margin: 18px auto;
-}
-
-.centerText {
-  text-align: center;
-}
-
-.statRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  font-size: 1.1rem;
 }
 
 .iconGrid {
@@ -195,29 +67,37 @@ button:active {
   align-items: center;
 }
 
+.activityScreen {
+  position: relative;
+  padding-bottom: 220px;
+}
+
+.activityContent {
+  width: 90vw;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
 .actionGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  width: 90vw;
-  max-width: 420px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .iconButton {
   position: relative;
   width: 100%;
-  max-width: none;
   padding: 0;
   margin: 0;
   background: transparent;
   border: none;
-  cursor: pointer;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  filter: drop-shadow(8px 15px 10px gray);
+  filter: drop-shadow(8px 15px 10px rgba(70, 70, 70, 0.45));
 }
 
 .iconButton:hover {
@@ -225,14 +105,14 @@ button:active {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-.iconButton:active {
-  transform: scale(0.97);
-}
-
 .iconImage {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.menuIconButton {
+  width: 100%;
 }
 
 .scoreIconButton {
@@ -248,12 +128,10 @@ button:active {
   z-index: 5;
   display: block;
   pointer-events: none;
-
   color: white;
   font-size: 2rem;
   font-weight: 900;
   line-height: 1;
-
   text-shadow:
     0 2px 6px rgba(0, 0, 0, 0.75),
     0 0 10px rgba(0, 0, 0, 0.5);
@@ -267,13 +145,11 @@ button:active {
   justify-content: center;
   z-index: 6;
   pointer-events: none;
-
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: 1px;
   text-transform: uppercase;
-
   text-shadow:
     0 2px 6px rgba(0, 0, 0, 0.85),
     0 0 12px rgba(0, 0, 0, 0.55);
@@ -287,15 +163,102 @@ button:active {
   display: flex;
 }
 
-.afleveringerScreen {
-  position: relative;
-  padding-bottom: 220px;
+.bigActionButton {
+  width: 100%;
+  min-height: 110px;
+  border-radius: 22px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 14px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(4px);
+}
+
+.orangeAction {
+  background: rgba(255, 153, 0, 0.92);
+  color: white;
+}
+
+.yellowAction {
+  background: rgba(255, 210, 0, 0.92);
+  color: #222;
+}
+
+.blueAction {
+  background: rgba(33, 150, 243, 0.92);
+  color: white;
+}
+
+.greenAction {
+  background: rgba(20, 140, 60, 0.92);
+  color: white;
+}
+
+.neutralAction {
+  background: rgba(255, 255, 255, 0.88);
+  color: #12344d;
+}
+
+.statAction {
+  background: rgba(255, 255, 255, 0.55);
+  color: #12344d;
+  font-weight: 800;
+}
+
+.infoPanel {
+  margin: 18px auto 0;
+  padding: 16px;
+  max-width: 420px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.infoLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 1.08rem;
+  color: #12344d;
+}
+
+.infoLine strong {
+  font-size: 1.2rem;
+}
+
+.resultLine {
+  border-top: 1px solid rgba(18, 52, 77, 0.18);
+  margin-top: 6px;
+  padding-top: 12px;
+  font-weight: 700;
+}
+
+.statusText {
+  margin: 18px auto 0;
+  max-width: 420px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(4px);
+  color: #12344d;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .bottomButtonRow {
   position: fixed;
   left: 50%;
-  bottom: 30vh;
+  bottom: 20vh;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -311,13 +274,6 @@ button:active {
   width: 100%;
   max-width: 70px;
   min-width: 60px;
-  background: transparent;
-  border: none;
-  overflow: visible;
-  border-radius: 0;
-  box-shadow: none;
-  filter: drop-shadow(2px 4pxx 3px gray);
-  padding: 0;
 }
 
 .smallBottomIcon .iconImage {
@@ -330,10 +286,7 @@ button:active {
   body::before {
     content: "Drej telefonen til portræt";
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0, 0, 0, 0.75);
     color: white;
     font-size: 28px;
@@ -348,14 +301,8 @@ button:active {
 
 @media (max-width: 480px) {
   .iconGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    max-width: 520px;
-    margin: 0 auto;
-  }
-
-  .iconImage {
-    max-width: 155px;
+    gap: 28px;
+    max-width: 340px;
   }
 
   .scoreOverlay {
@@ -376,6 +323,11 @@ button:active {
 
   .winnerOverlay {
     font-size: 0.95rem;
+  }
+
+  .bigActionButton {
+    min-height: 96px;
+    font-size: 1rem;
   }
 
   h1 {
