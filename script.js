@@ -31,7 +31,7 @@ function resetAfleveringerWinner() {
 }
 
 function addPoint(color, points) {
-   playSound(pointSound);
+  playSound(pointSound);
   resetAfleveringerWinner();
 
   const scoreElement = document.getElementById(color + "Score");
