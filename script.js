@@ -2,7 +2,7 @@ const screens = document.querySelectorAll(".screen");
 const clickSound = new Audio("click.mp3");
 const pointSound = new Audio("point.mp3");
 const winSound = new Audio("winning.mp3");
-const winSound = new Audio("reset.mp3");
+
 
 /* ---------- Generelt ---------- */
 function playSound(sound) {
@@ -44,6 +44,7 @@ function resetAfleveringerScore() {
   document.getElementById("blueScore").textContent = "0";
 
   resetAfleveringerWinner();
+  playSound(clickSound);
 }
 
 function finishAfleveringerGame() {
@@ -55,6 +56,7 @@ function finishAfleveringerGame() {
   const maxScore = Math.max(orange, yellow, blue);
 
   resetAfleveringerWinner();
+  playSound(winSound);
 
   if (maxScore === 0) return;
 
