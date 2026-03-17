@@ -1,20 +1,22 @@
 const screens = document.querySelectorAll(".screen");
+
 const clickSound = new Audio("click.mp3");
-const pointSound = new Audio("point.mp3");
-const winSound = new Audio("winning.mp3");
+const kickSound = new Audio("point.mp3");
+const crowdSound = new Audio("winning.mp3");
 
-
-/* ---------- Generelt ---------- */
 function playSound(sound) {
-  sound.currentTime = 0;
-  sound.play();
+  try {
+    sound.currentTime = 0;
+    sound.play();
+  } catch (error) {
+    console.log("Lyd kunne ikke afspilles:", error);
+  }
 }
 
+/* ---------- SKÆRMSKIFT ---------- */
 function showScreen(screenId) {
   playSound(clickSound);
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.add("hidden");
-  });
+  screens.forEach(screen => screen.classList.add("hidden"));
   document.getElementById(screenId).classList.remove("hidden");
 }
 
@@ -31,20 +33,12 @@ function resetAfleveringerWinner() {
 }
 
 function addPoint(color, points) {
-  playSound(pointSound);
+  playSound(kickSound);
   resetAfleveringerWinner();
 
   const scoreElement = document.getElementById(color + "Score");
   const currentScore = parseInt(scoreElement.textContent, 10) || 0;
   scoreElement.textContent = currentScore + points;
-}
-function resetAfleveringerScore() {
-  document.getElementById("orangeScore").textContent = "0";
-  document.getElementById("yellowScore").textContent = "0";
-  document.getElementById("blueScore").textContent = "0";
-
-  resetAfleveringerWinner();
-  playSound(clickSound);
 }
 
 function finishAfleveringerGame() {
@@ -56,9 +50,10 @@ function finishAfleveringerGame() {
   const maxScore = Math.max(orange, yellow, blue);
 
   resetAfleveringerWinner();
-  playSound(winSound);
 
   if (maxScore === 0) return;
+
+  playSound(crowdSound);
 
   Object.keys(scores).forEach(color => {
     if (scores[color] === maxScore) {
@@ -72,6 +67,14 @@ function finishAfleveringerGame() {
   });
 }
 
+function resetAfleveringerScore() {
+  document.getElementById("orangeScore").textContent = "0";
+  document.getElementById("yellowScore").textContent = "0";
+  document.getElementById("blueScore").textContent = "0";
+  resetAfleveringerWinner();
+  playSound(clickSound);
+}
+
 /* ---------- PÅ TID ---------- */
 let timeScores = {
   orange: 0,
@@ -79,9 +82,9 @@ let timeScores = {
   blue: 0
 };
 
-let activeColor = null;
 let timeGameRunning = false;
 let timeGamePaused = false;
+let activeColor = null;
 let timeInterval = null;
 
 function updateTimeDisplay() {
@@ -90,32 +93,59 @@ function updateTimeDisplay() {
   document.getElementById("blueTime").textContent = String(timeScores.blue).padStart(2, "0");
 }
 
-function activateColor(color) {
-  if (!timeGameRunning) {
-    timeGameRunning = true;
-    timeGamePaused = false;
+function updateTimePauseUI() {
+  const textButton = document.getElementById("timePauseButton");
+  const icon = document.getElementById("timeToggleIcon");
 
-    timeInterval = setInterval(() => {
-      if (!timeGamePaused && activeColor) {
-        timeScores[activeColor]++;
-        updateTimeDisplay();
-      }
-    }, 1000);
-  }
-
-  if (!timeGamePaused) {
-    activeColor = color;
+  if (timeGamePaused) {
+    textButton.textContent = "Genoptag";
+    icon.src = "resume.png";
+  } else {
+    textButton.textContent = "Pause";
+    icon.src = "pause.png";
   }
 }
 
-function pauseResume() {
+function startTimeGame() {
+  playSound(clickSound);
+
+  if (timeGameRunning) return;
+
+  timeGameRunning = true;
+  timeGamePaused = false;
+
+  timeInterval = setInterval(() => {
+    if (!timeGamePaused && activeColor) {
+      timeScores[activeColor]++;
+      updateTimeDisplay();
+    }
+  }, 1000);
+
+  updateTimePauseUI();
+}
+
+function activateColor(color) {
+  playSound(kickSound);
+
+  if (!timeGameRunning) {
+    startTimeGame();
+  }
+
+  timeGamePaused = false;
+  activeColor = color;
+  updateTimePauseUI();
+}
+
+function pauseResumeTime() {
+  playSound(clickSound);
+
   if (!timeGameRunning) return;
 
   timeGamePaused = !timeGamePaused;
-  document.getElementById("pauseBtn").textContent = timeGamePaused ? "Genoptag" : "Pause";
+  updateTimePauseUI();
 }
 
-function stopGame() {
+function finishTimeGame() {
   if (timeInterval) {
     clearInterval(timeInterval);
     timeInterval = null;
@@ -124,7 +154,7 @@ function stopGame() {
   timeGameRunning = false;
   timeGamePaused = false;
   activeColor = null;
-  document.getElementById("pauseBtn").textContent = "Pause";
+  updateTimePauseUI();
 
   const maxTime = Math.max(timeScores.orange, timeScores.yellow, timeScores.blue);
 
@@ -139,7 +169,26 @@ function stopGame() {
   if (timeScores.blue === maxTime) winners.push("Blå");
 
   document.getElementById("winner").textContent =
-    winners.length === 1 ? winners[0] : "Uafgjort: " + winners.join(", ");
+    winners.length === 1 ? winners[0] + " vinder" : "Uafgjort: " + winners.join(", ");
+
+  playSound(crowdSound);
+}
+
+function resetTimeGame() {
+  if (timeInterval) {
+    clearInterval(timeInterval);
+    timeInterval = null;
+  }
+
+  timeScores = { orange: 0, yellow: 0, blue: 0 };
+  timeGameRunning = false;
+  timeGamePaused = false;
+  activeColor = null;
+
+  updateTimeDisplay();
+  updateTimePauseUI();
+  document.getElementById("winner").textContent = "Ingen endnu";
+  playSound(clickSound);
 }
 
 /* ---------- TREKANT ---------- */
@@ -153,11 +202,20 @@ function updateTrekantDisplay() {
   document.getElementById("tOrange").textContent = trekantScores.orange;
   document.getElementById("tYellow").textContent = trekantScores.yellow;
   document.getElementById("tBlue").textContent = trekantScores.blue;
+}
 
+function trekantClick(color) {
+  playSound(kickSound);
+  trekantScores[color]++;
+  updateTrekantDisplay();
+  document.getElementById("tLeader").textContent = "Spillet er i gang";
+}
+
+function finishTrekantGame() {
   const maxScore = Math.max(trekantScores.orange, trekantScores.yellow, trekantScores.blue);
 
   if (maxScore === 0) {
-    document.getElementById("tLeader").textContent = "Ingen";
+    document.getElementById("tLeader").textContent = "Ingen vinder endnu";
     return;
   }
 
@@ -167,12 +225,16 @@ function updateTrekantDisplay() {
   if (trekantScores.blue === maxScore) leaders.push("Blå");
 
   document.getElementById("tLeader").textContent =
-    leaders.length === 1 ? leaders[0] : "Uafgjort: " + leaders.join(", ");
+    leaders.length === 1 ? leaders[0] + " vinder" : "Uafgjort: " + leaders.join(", ");
+
+  playSound(crowdSound);
 }
 
-function trekantClick(color) {
-  trekantScores[color]++;
+function resetTrekantGame() {
+  trekantScores = { orange: 0, yellow: 0, blue: 0 };
   updateTrekantDisplay();
+  document.getElementById("tLeader").textContent = "Ingen vinder endnu";
+  playSound(clickSound);
 }
 
 /* ---------- STAFET ---------- */
@@ -180,6 +242,8 @@ let stafetInterval = null;
 let stafetRunning = false;
 let yellowTimeMs = 0;
 let greenTimeMs = 0;
+let yellowStopped = false;
+let greenStopped = false;
 
 function formatMs(ms) {
   const totalSeconds = Math.floor(ms / 1000);
@@ -193,30 +257,87 @@ function updateStafetDisplay() {
   document.getElementById("greenStafet").textContent = formatMs(greenTimeMs);
 }
 
+function updateStafetStatus() {
+  if (!stafetRunning && yellowTimeMs === 0 && greenTimeMs === 0) {
+    document.getElementById("stafetStatus").textContent = "Klar";
+    return;
+  }
+
+  if (yellowStopped && greenStopped) {
+    document.getElementById("stafetStatus").textContent = "Færdig";
+    return;
+  }
+
+  if (stafetRunning) {
+    document.getElementById("stafetStatus").textContent = "I gang";
+  }
+}
+
 function startStafet() {
-  resetStafet();
+  playSound(clickSound);
+
+  if (stafetRunning) return;
 
   stafetRunning = true;
+  yellowStopped = false;
+  greenStopped = false;
+  document.getElementById("stafetWinner").textContent = "Spillet er i gang";
+  updateStafetStatus();
+
   stafetInterval = setInterval(() => {
-    if (stafetRunning) {
-      yellowTimeMs += 1000;
-      greenTimeMs += 1000;
-      updateStafetDisplay();
+    if (!yellowStopped) yellowTimeMs += 1000;
+    if (!greenStopped) greenTimeMs += 1000;
+
+    updateStafetDisplay();
+
+    if (yellowStopped && greenStopped) {
+      finishStafetGame();
     }
   }, 1000);
-
-  document.getElementById("yellowBtn").classList.remove("stopped");
-  document.getElementById("greenBtn").classList.remove("stopped");
 }
 
 function stopYellow() {
-  if (!stafetRunning) return;
-  document.getElementById("yellowBtn").classList.add("stopped");
+  if (!stafetRunning || yellowStopped) return;
+  playSound(kickSound);
+  yellowStopped = true;
+  updateStafetStatus();
 }
 
 function stopGreen() {
-  if (!stafetRunning) return;
-  document.getElementById("greenBtn").classList.add("stopped");
+  if (!stafetRunning || greenStopped) return;
+  playSound(kickSound);
+  greenStopped = true;
+  updateStafetStatus();
+}
+
+function finishStafetGame() {
+  if (stafetInterval) {
+    clearInterval(stafetInterval);
+    stafetInterval = null;
+  }
+
+  stafetRunning = false;
+  updateStafetStatus();
+
+  if (yellowTimeMs === 0 && greenTimeMs === 0) {
+    document.getElementById("stafetWinner").textContent = "Ingen vinder endnu";
+    return;
+  }
+
+  if (!yellowStopped || !greenStopped) {
+    document.getElementById("stafetWinner").textContent = "Stop begge hold først";
+    return;
+  }
+
+  if (yellowTimeMs < greenTimeMs) {
+    document.getElementById("stafetWinner").textContent = "Gul vinder";
+  } else if (greenTimeMs < yellowTimeMs) {
+    document.getElementById("stafetWinner").textContent = "Grøn vinder";
+  } else {
+    document.getElementById("stafetWinner").textContent = "Uafgjort";
+  }
+
+  playSound(crowdSound);
 }
 
 function resetStafet() {
@@ -228,13 +349,18 @@ function resetStafet() {
   stafetRunning = false;
   yellowTimeMs = 0;
   greenTimeMs = 0;
-  updateStafetDisplay();
+  yellowStopped = false;
+  greenStopped = false;
 
-  document.getElementById("yellowBtn").classList.remove("stopped");
-  document.getElementById("greenBtn").classList.remove("stopped");
+  updateStafetDisplay();
+  updateStafetStatus();
+  document.getElementById("stafetWinner").textContent = "Ingen vinder endnu";
+  playSound(clickSound);
 }
 
-/* ---------- Starttilstand ---------- */
+/* ---------- STARTTILSTAND ---------- */
 updateTimeDisplay();
+updateTimePauseUI();
 updateTrekantDisplay();
 updateStafetDisplay();
+updateStafetStatus();
