@@ -255,7 +255,19 @@ button:active {
   box-sizing: border-box;
 }
 
-.bottomButtonRow {
+.bottomButtonRow3 {
+  position: fixed;
+  left: 50%;
+  bottom: 20vh;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+.bottomButtonRow4 {
   position: fixed;
   left: 50%;
   bottom: 20vh;
@@ -263,10 +275,8 @@ button:active {
   display: grid;
   grid-template-columns: repeat(4, auto);
   gap: 14px;
-  width: 60vw;
-  max-width: 240px;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
   z-index: 20;
 }
 
