@@ -80,7 +80,7 @@ button:active {
 
 .actionGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1f);
   gap: 20px;
   width: 100%;
   margin: 0 auto;
@@ -261,7 +261,7 @@ button:active {
   bottom: 20vh;
   transform: translateX(-50%);
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, auto);
   gap: 14px;
   width: 60vw;
   max-width: 240px;
