@@ -284,12 +284,14 @@ button:active {
   width: 100%;
   max-width: 70px;
   min-width: 60px;
+  overflow: visible;
 }
 
 .smallBottomIcon .iconImage {
   width: 100%;
   height: auto;
   display: block;
+  overflow: visible;
 }
 
 @media screen and (orientation: landscape) {
